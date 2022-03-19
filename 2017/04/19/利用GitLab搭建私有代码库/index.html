@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>利用GitLab搭建私有代码库 | 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="GitLab 简介GitLab 是利用 Ruby On Rails 一个开源的版本管理系统，实现一个自托管的 Git 项目仓库，可通过 Web 界面进行访问公开的或者私人项目。它拥有与 GitHub 类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序( Wall )进行交流。它还提供一个代码片段收">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用GitLab搭建私有代码库">
+<meta property="og:url" content="https://auska.github.io/2017/04/19/%E5%88%A9%E7%94%A8GitLab%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BB%A3%E7%A0%81%E5%BA%93/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="GitLab 简介GitLab 是利用 Ruby On Rails 一个开源的版本管理系统，实现一个自托管的 Git 项目仓库，可通过 Web 界面进行访问公开的或者私人项目。它拥有与 GitHub 类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序( Wall )进行交流。它还提供一个代码片段收">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-04-19T07:44:28.000Z">
+<meta property="article:modified_time" content="2022-03-19T11:11:47.059Z">
+<meta property="article:author" content="Auska">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="gitlab">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Auska.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-利用GitLab搭建私有代码库" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/04/19/%E5%88%A9%E7%94%A8GitLab%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BB%A3%E7%A0%81%E5%BA%93/" class="article-date">
+  <time class="dt-published" datetime="2017-04-19T07:44:28.000Z" itemprop="datePublished">2017-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      利用GitLab搭建私有代码库
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="GitLab-简介"><a href="#GitLab-简介" class="headerlink" title="GitLab 简介"></a>GitLab 简介</h2><p>GitLab 是利用 Ruby On Rails 一个开源的版本管理系统，实现一个自托管的 Git 项目仓库，可通过 Web 界面进行访问公开的或者私人项目。它拥有与 GitHub 类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序( Wall )进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用，便于日后有需要的时候进行查找。</p>
+<!---more--->
+
+<p>GitHub 它是一个开源的社区, 如果你想把你们公司的项目放在上面就得交钱, 如果不交钱就得开源, 而 GitLab 是一个本地的项目管理仓库, 既然是本地那么想怎么玩就怎么玩儿</p>
+<p><strong>优点</strong></p>
+<ul>
+<li>社区版基于 MIT License 开源完全免费</li>
+<li>无用户，协作和仓库限制</li>
+<li>保护项目源码安全</li>
+<li>管理仓库，用户与访问权限</li>
+</ul>
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><ul>
+<li>服务器：微软Azure主机</li>
+<li>操作系统：Ubuntu 16.04 X64</li>
+<li>软件包：LNMP组件</li>
+</ul>
+<h2 id="安装GitLab"><a href="#安装GitLab" class="headerlink" title="安装GitLab"></a>安装GitLab</h2><h3 id="选择版本"><a href="#选择版本" class="headerlink" title="选择版本"></a>选择版本</h3><p>GitLab分为社区版（GitLab Community Edition）和企业版（GitLab Enterprise Edition）。社区版免费，企业版收费，但是功能比社区版多。根据目前的需求，选择安装社区版（GitLab-CE）。</p>
+<h3 id="安装配置依赖项"><a href="#安装配置依赖项" class="headerlink" title="安装配置依赖项"></a>安装配置依赖项</h3><p>如想使用Postfix来发送邮件,在安装期间请选择’Internet Site’. 您也可以用sendmai或者 配置SMTP服务 并 使用SMTP发送邮件.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install curl openssh-server ca-certificates postfix</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加GitLab仓库，并安装到服务器上"><a href="#添加GitLab仓库，并安装到服务器上" class="headerlink" title="添加GitLab仓库，并安装到服务器上"></a>添加GitLab仓库，并安装到服务器上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.deb.sh | sudo bash</span><br><span class="line">apt install gitlab-ce</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动GitLab"><a href="#启动GitLab" class="headerlink" title="启动GitLab"></a>启动GitLab</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用浏览器访问GitLab"><a href="#使用浏览器访问GitLab" class="headerlink" title="使用浏览器访问GitLab"></a>使用浏览器访问GitLab</h3><p>首次访问GitLab,系统会让你重新设置管理员的密码,设置成功后会返回登录界面.<br>默认的管理员账号是root,如果你想更改默认管理员账号,请输入上面设置的新密码登录系统后修改帐号名.</p>
+<h2 id="未完待续。。。。。。"><a href="#未完待续。。。。。。" class="headerlink" title="未完待续。。。。。。"></a>未完待续。。。。。。</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://auska.github.io/2017/04/19/%E5%88%A9%E7%94%A8GitLab%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BB%A3%E7%A0%81%E5%BA%93/" data-id="cl0xrrub8001ec4tyh77q5qsz" data-title="利用GitLab搭建私有代码库" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/20/%E8%BD%AC%E8%BD%BD-%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-Git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [转载]深入浅出 Git
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/16/LEDE%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LEDE编译教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bilibili/" rel="tag">Bilibili</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross/" rel="tag">Cross</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DSM/" rel="tag">DSM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gogs/" rel="tag">Gogs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/" rel="tag">LEDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NAS/" rel="tag">NAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SS/" rel="tag">SS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/" rel="tag">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/" rel="tag">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WDMyCloud/" rel="tag">WDMyCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h5ai/" rel="tag">h5ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A0%E5%AF%86/" rel="tag">加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E5%88%B6/" rel="tag">压制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%82%E6%9C%BA/" rel="tag">挂机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%A3%E5%AF%86/" rel="tag">解密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B5%84%E6%BA%90/" rel="tag">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bilibili/" style="font-size: 10px;">Bilibili</a> <a href="/tags/Cross/" style="font-size: 10px;">Cross</a> <a href="/tags/DSM/" style="font-size: 13.33px;">DSM</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Gogs/" style="font-size: 10px;">Gogs</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/LEDE/" style="font-size: 10px;">LEDE</a> <a href="/tags/NAS/" style="font-size: 20px;">NAS</a> <a href="/tags/SS/" style="font-size: 10px;">SS</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 15px;">VPS</a> <a href="/tags/WDMyCloud/" style="font-size: 16.67px;">WDMyCloud</a> <a href="/tags/git/" style="font-size: 11.67px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/h5ai/" style="font-size: 10px;">h5ai</a> <a href="/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">加密</a> <a href="/tags/%E5%8E%8B%E5%88%B6/" style="font-size: 10px;">压制</a> <a href="/tags/%E6%8C%82%E6%9C%BA/" style="font-size: 10px;">挂机</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 18.33px;">教程</a> <a href="/tags/%E6%B8%B8%E6%88%8F/" style="font-size: 10px;">游戏</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 11.67px;">编译</a> <a href="/tags/%E8%A7%A3%E5%AF%86/" style="font-size: 10px;">解密</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 11.67px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/02/%E7%BE%A4%E6%99%96%E5%AE%89%E8%A3%85-qBittorrent-%E5%A5%97%E4%BB%B6/">群晖安装 qBittorrent 套件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/mergerfs%20%E5%90%88%E5%B9%B6%E5%A4%9A%E5%9D%97%E7%A1%AC%E7%9B%98%E7%9A%84%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4/">（转载）mergerfs 合并多块硬盘的剩余空间</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/%E7%9B%AE%E5%BD%95%E7%BA%A7%E5%88%AB%E7%9A%84%E5%86%97%E4%BD%99%E5%AD%98%E5%82%A8%EF%BC%9ASnapRAID/">（转载）目录级别的冗余存储：SnapRAID</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/11/Docker%20%E4%B8%AA%E4%BA%BA%E9%95%9C%E5%83%8F%E8%B5%84%E6%BA%90/">Docker 个人镜像资源</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/24/%E9%9D%99%E6%80%81%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/">静态交叉编译教程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Auska<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
