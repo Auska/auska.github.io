@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -207,9 +207,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-04-30 17:34:17 / 修改时间：17:42:48" itemprop="dateCreated datePublished" datetime="2022-04-30T17:34:17+08:00">2022-04-30</time>
+      <time title="创建时间：2022-04-30 17:34:17" itemprop="dateCreated datePublished" datetime="2022-04-30T17:34:17+08:00">2022-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:22:48" itemprop="dateModified" datetime="2022-05-01T10:22:48+08:00">2022-05-01</time>
     </span>
 
   
@@ -225,6 +231,7 @@
           <h1 id="什么是ZFS文件系统"><a href="#什么是ZFS文件系统" class="headerlink" title="什么是ZFS文件系统"></a>什么是ZFS文件系统</h1><p>ZFS文件系统的英文名称为Zettabyte File System,也叫动态文件系统（Dynamic File System）,是第一个128位文件系统。最初是由Sun公司为Solaris 10操作系统开发的文件系统。作为OpenSolaris开源计划的一部分，ZFS于2005年11月发布，被Sun称为是终极文件系统，经历了 10 年的活跃开发。而最新的开发将全面开放，并重新命名为 OpenZFS</p>
 <hr>
 <!---more--->
+
 <h1 id="ZFS文件系统特点"><a href="#ZFS文件系统特点" class="headerlink" title="ZFS文件系统特点"></a>ZFS文件系统特点</h1><h2 id="强大的实时数据缩减技术"><a href="#强大的实时数据缩减技术" class="headerlink" title="强大的实时数据缩减技术"></a>强大的实时数据缩减技术</h2><p>在线实时处理的区块层级 (Block-based) 数据重复删除机制 (Inline Data Deduplication)，让数据在写入磁盘前就已经过删减演算，大幅节省存储空间占用；加上让大档变小档的数据压缩 (Inline Compression)，以及先进的实时数据压实 (Inline Compaction) 技术，对于存储空间的节省程度带来重大的突破。在数据重复性质高或大量小型数据存取的情境下，提升 SSD 空间使用率的效益尤其明显，不仅显著提升全快闪配置的写入效能，对 SSD 的耐用性与使用寿命也有帮助，让全快闪存储架构成本效益更高。</p>
 <h2 id="突破想象的-PB-级巨量存储"><a href="#突破想象的-PB-级巨量存储" class="headerlink" title="突破想象的 PB 级巨量存储"></a>突破想象的 PB 级巨量存储</h2><p>128 位的 ZFS 文件系统拥有巨大的存储潜力，且 ZFS 原生就有强大的 RAID 逻辑磁盘管理功能。基于 ZFS 文件系统的存储方案，单一共享文件夹空间高达 1 PB 容量，更能协助企业克服当前大数据分析、边缘预算、AI 应用等巨量数据存储的挑战。面对 PB 等级的存储容量配置时，RAID Z 磁盘阵列架构亦也有传统磁盘阵列所无法实现的高速建置效率，提供弹性更大、存取效率更高的磁盘空间运用。</p>
 <h2 id="零秒瞬间，实时的-SnapSync-快照同步"><a href="#零秒瞬间，实时的-SnapSync-快照同步" class="headerlink" title="零秒瞬间，实时的 SnapSync 快照同步"></a>零秒瞬间，实时的 SnapSync 快照同步</h2><p>ZFS 支持 iSCSI LUN 与共享文件夹的快照，快照数量高达 65,535 份 (假设每小时拍 1 张快照，1 天 24 张，可维持 7 年不用删除！)，实现缜密的多版本快照保护。运用 Copy-on-Write 技术，拍摄快照近乎实时，且不影响当下的系统运作性能。利用快照文件还原数据也无需中断系统正在进行的服务，短时间内即刻启动灾难复原计划。更进阶的区块层级 Real-time SnapSync 实时快照同步功能，让本地 NAS 与备份 NAS 随时随地保持数据同步，关键数据得以获得更新、更完整而实时的备份。</p>
@@ -655,6 +662,729 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/21/Shell-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/06/21/Shell-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6/" class="post-title-link" itemprop="url">Shell 基本运算符</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-21 10:32:28" itemprop="dateCreated datePublished" datetime="2016-06-21T10:32:28+08:00">2016-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:33:23" itemprop="dateModified" datetime="2022-05-01T10:33:23+08:00">2022-05-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>Shell</code> 和其他编程语言一样，支持多种运算符，包括：</p>
+<ul>
+<li>算数运算符</li>
+<li>关系运算符</li>
+<li>布尔运算符</li>
+<li>字符串运算符</li>
+<li>文件测试运算符</li>
+</ul>
+<!---more--->
+
+<p>原生<code>bash</code>不支持简单的数学运算，但是可以通过其他命令来实现，例如 <code>awk</code> 和 <code>expr</code>，<code>expr</code> 最常用。</p>
+<p><code>expr</code> 是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
+<p>两点注意：</p>
+<ul>
+<li>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</li>
+<li>完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
+</ul>
+<hr>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>下表列出了常用的算术运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加法</td>
+<td>`expr $a + $b` 结果为 30。</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减法</td>
+<td>`expr $a - $b` 结果为 -10。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法</td>
+<td>`expr $a \* $b` 结果为  200。</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>除法</td>
+<td>`expr $b &#x2F; $a` 结果为 2。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取余</td>
+<td>`expr $b % $a` 结果为 0。</td>
+</tr>
+<tr>
+<td>&#x3D;</td>
+<td>赋值</td>
+<td>a&#x3D;$b 把变量 b 的值赋给 a。</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>相等。用于比较两个数字，相同则返回 true。</td>
+<td>[ $a &#x3D;&#x3D; $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>不相等。用于比较两个数字，不相同则返回 true。</td>
+<td>[ $a !&#x3D; $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>:条件表达式要放在方括号之间，并且要有空格，例如: <strong>[$a&#x3D;&#x3D;$b]</strong> 是错误的，必须写成 **[ $a &#x3D;&#x3D; $b ]**。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>乘号(*)前边必须加反斜杠(\)才能实现乘法运算；</li>
+<li>if…then…fi 是条件语句，后续将会讲解。</li>
+<li>在 MAC 中 shell 的 expr 语法是：**$((表达式))*<em>，此处表达式中的 “</em>“ 不需要转义符号 “\“ 。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<p>下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-eq</td>
+<td>检测两个数是否相等，相等返回 true。</td>
+<td>[ $a -eq $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>检测两个数是否不相等，不相等返回 true。</td>
+<td>[ $a -ne $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>检测左边的数是否大于右边的，如果是，则返回 true。</td>
+<td>[ $a -gt $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>检测左边的数是否小于右边的，如果是，则返回 true。</td>
+<td>[ $a -lt $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+<td>[ $a -ge $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+<td>[ $a -le $b ] 返回 true。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h2><p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td>[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+<td>[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+<td>[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>逻辑的 AND</td>
+<td>[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</td>
+</tr>
+<tr>
+<td>|</td>
+<td>逻辑的 OR</td>
+<td>[[ $a -lt 100 | $b -gt 100 ]] 返回 true</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h2><p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>检测两个字符串是否相等，相等返回 true。</td>
+<td>[ $a &#x3D; $b ] 返回 false。</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>检测两个字符串是否不相等，不相等返回 true。</td>
+<td>[ $a !&#x3D; $b ] 返回 true。</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>检测字符串长度是否为0，为0返回 true。</td>
+<td>[ -z $a ] 返回 false。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>检测字符串长度是否不为 0，不为 0 返回 true。</td>
+<td>[ -n “$a” ] 返回 true。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>检测字符串是否为空，不为空返回 true。</td>
+<td>[ $a ] 返回 true。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h2><p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
+<p>属性检测描述如下：</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b file</td>
+<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td>[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
+<td>[ -c $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>检测文件是否是目录，如果是，则返回 true。</td>
+<td>[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td>[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td>[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td>[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>检测文件是否是有名管道，如果是，则返回 true。</td>
+<td>[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td>[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>检测文件是否可读，如果是，则返回 true。</td>
+<td>[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-w file</td>
+<td>检测文件是否可写，如果是，则返回 true。</td>
+<td>[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-x file</td>
+<td>检测文件是否可执行，如果是，则返回 true。</td>
+<td>[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-s file</td>
+<td>检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td>[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-e file</td>
+<td>检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td>[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p>其他检查符：</p>
+<ul>
+<li><strong>-S</strong>: 判断某文件是否 socket。</li>
+<li><strong>-L</strong>: 检测文件是否存在并且是一个符号链接。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/11/Shell-%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/06/11/Shell-%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">Shell 函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-11 10:31:09" itemprop="dateCreated datePublished" datetime="2016-06-11T10:31:09+08:00">2016-06-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:32:06" itemprop="dateModified" datetime="2022-05-01T10:32:06+08:00">2022-05-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><code>linux shell</code> 可以用户定义函数，然后在<code>shell</code>脚本中可以随便调用。</p>
+<!---more--->
+
+<p><code>shell</code>中函数的定义格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">\[ function \] funname \[()\]</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    action;</span><br><span class="line"></span><br><span class="line">    \[return int;\]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>1、可以带<code>function fun()</code> 定义，也可以直接<code>fun()</code> 定义,不带任何参数。</li>
+<li>2、参数返回，可以显示加：<code>return</code> 返回，如果不加，将以最后一条命令运行结果，作为返回值。 <code>return</code>后跟数值<code>n(0-255)</code></li>
+</ul>
+<hr>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><p>在<code>Shell</code>中，调用函数时可以向其传递参数。在函数体内部，通过 <code>$n</code> 的形式来获取参数的值，例如，<code>$1</code>表示第一个参数，<code>$2</code>表示第二个参数…</p>
+<p>注意，<code>$10</code> 不能获取第十个参数，获取第十个参数需要<code>$&#123;10&#125;</code>。当<code>n&gt;=10</code>时，需要使用<code>$&#123;n&#125;</code>来获取参数。</p>
+<p>另外，还有几个特殊字符用来处理参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数处理</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$#</td>
+<td>传递到脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以一个单字符串显示所有向脚本传递的参数</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>与$*相同，但是使用时加引号，并在引号中返回每个参数。</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>显示Shell使用的当前选项，与set命令功能相同。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/" class="post-title-link" itemprop="url">Shell 输入/输出重定向</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-05 10:29:58" itemprop="dateCreated datePublished" datetime="2016-06-05T10:29:58+08:00">2016-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:32:06" itemprop="dateModified" datetime="2022-05-01T10:32:06+08:00">2022-05-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>大多数 <code>UNIX </code>系统命令从你的终端接受输入并将所产生的输出发送回到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。</p>
+<!---more--->
+
+<p>重定向命令列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file。</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file。</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>需要注意的是文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。</p>
+</blockquote>
+<hr>
+<h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p>重定向一般通过在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:</p>
+<p><code>command1 &gt; file1</code></p>
+<p>上面这个命令执行<code>command1</code>然后将输出的内容存入<code>file1</code>。</p>
+<p>注意任何<code>file1</code>内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用<code>&gt;&gt;</code>操作符。</p>
+<hr>
+<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p>和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
+<p><code>command1 &lt; file1</code></p>
+<p>这样，本来需要从键盘获取输入的命令会转移到文件读取内容。</p>
+<p>注意：输出重定向是大于号<code>&gt;</code>，输入重定向是小于号<code>&lt;</code>。</p>
+<h3 id="重定向深入讲解"><a href="#重定向深入讲解" class="headerlink" title="重定向深入讲解"></a>重定向深入讲解</h3><p>一般情况下，每个 Unix&#x2F;Linux 命令运行时都会打开三个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</span><br><span class="line">- 标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</span><br><span class="line">- 标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</span><br></pre></td></tr></table></figure>
+<p>默认情况下，<code>command &gt; file</code> 将 <code>stdout</code> 重定向到 <code>file</code>，<code>command &lt; file</code> 将<code>stdin</code> 重定向到 <code>file</code>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/05/21/TCP-IP-%E9%82%AE%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/05/21/TCP-IP-%E9%82%AE%E4%BB%B6/" class="post-title-link" itemprop="url">TCP/IP 邮件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-05-21 10:26:50" itemprop="dateCreated datePublished" datetime="2016-05-21T10:26:50+08:00">2016-05-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:28:21" itemprop="dateModified" datetime="2022-05-01T10:28:21+08:00">2022-05-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>电子邮件是 TCP&#x2F;IP 最重要的应用之一。</p>
+<hr>
+<!---more--->
+
+<h2 id="您不会用到…"><a href="#您不会用到…" class="headerlink" title="您不会用到…"></a>您不会用到…</h2><p>当您写邮件时，您不会用到 TCP&#x2F;IP。</p>
+<p>当您写邮件时，您用到的是电子邮件程序，例如莲花软件的 Notes，微软公司出品的 Outlook，或者 Netscape Communicator 等等。</p>
+<hr>
+<h2 id="邮件程序会用到…"><a href="#邮件程序会用到…" class="headerlink" title="邮件程序会用到…"></a>邮件程序会用到…</h2><p>您的电子邮件程序使用不同的 TCP&#x2F;IP 协议：</p>
+<ul>
+<li>使用 SMTP 来发送邮件</li>
+<li>使用 POP 从邮件服务器下载邮件</li>
+<li>使用 IMAP 连接到邮件服务器</li>
+</ul>
+<hr>
+<h2 id="SMTP-简单邮件传输协议"><a href="#SMTP-简单邮件传输协议" class="headerlink" title="SMTP - 简单邮件传输协议"></a>SMTP - 简单邮件传输协议</h2><p>SMTP 协议用于传输电子邮件。SMTP 负责把邮件发送到另一台计算机。</p>
+<p>通常情况下，邮件会被送到一台邮件服务器（SMTP 服务器），然后被送到另一台（或几台）服务器，然后最终被送到它的目的地。</p>
+<p>SMTP 也可以传送纯文本，但是无法传输诸如图片、声音或者电影之类的二进制数据。</p>
+<p>SMTP 使用 MIME 协议通过 TCP&#x2F;IP 网络来发送二进制数据。MIME 协议会将二进制数据转换为纯文本。</p>
+<hr>
+<h2 id="POP-邮局协议"><a href="#POP-邮局协议" class="headerlink" title="POP - 邮局协议"></a>POP - 邮局协议</h2><p>POP 协议被邮件程序用来取回邮件服务器上面的邮件。</p>
+<p>假如您的邮件程序使用 POP，那么一旦它连接上邮件服务器，您的所有的邮件都会被下载到邮件程序中（或者称之为邮件客户端）。</p>
+<hr>
+<h2 id="IMAP-因特网消息访问协议"><a href="#IMAP-因特网消息访问协议" class="headerlink" title="IMAP - 因特网消息访问协议"></a>IMAP - 因特网消息访问协议</h2><p>与 POP 类似，IMAP 协议同样被邮件程序使用。</p>
+<p>IMAP 协议与 POP 协议之间的主要差异是：如果 IMAP 连上了邮件服务器，它不会自动地将邮件下载到邮件程序之中。</p>
+<p>IMAP 使您有能力在下载邮件之前先通过邮件服务器端查看他们。通过 IMAP，您可以选择下载这些邮件或者仅仅是删除它们。比方说您需要从不同的位置访问邮件服务器，但是仅仅希望回到办公室的时候再下载邮件，IMAP 在这种情况下会很有用。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>
