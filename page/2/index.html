@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -170,6 +170,153 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2017/09/24/%E9%9D%99%E6%80%81%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/09/24/%E9%9D%99%E6%80%81%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">静态交叉编译教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-24 17:54:12" itemprop="dateCreated datePublished" datetime="2017-09-24T17:54:12+08:00">2017-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-19 19:05:15" itemprop="dateModified" datetime="2022-05-19T19:05:15+08:00">2022-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>静态交叉编译教程，本文以SS为例。</p>
+<hr>
+<h1 id="配置编译环境"><a href="#配置编译环境" class="headerlink" title="配置编译环境"></a>配置编译环境</h1><h2 id="安装需要软件"><a href="#安装需要软件" class="headerlink" title="安装需要软件"></a>安装需要软件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y build-essential autoconf autopoint automake git pkg-config</span><br></pre></td></tr></table></figure>
+
+<h2 id="交叉编译工具"><a href="#交叉编译工具" class="headerlink" title="交叉编译工具"></a>交叉编译工具</h2><h3 id="下载编译工具"><a href="#下载编译工具" class="headerlink" title="下载编译工具"></a>下载编译工具</h3><p>以群晖为例，所有的交叉编译工具下载地址：<br><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/dsgpl/files/">https://sourceforge.net/projects/dsgpl/files/</a><br>选择对应机型下载。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt</span><br><span class="line">wget https://ncu.dl.sourceforge.net/project/dsgpl/DSM%206.1%20Tool%20Chains/Intel%20x86%20Linux%203.10.102%20%28Broadwell%29/broadwell-gcc493_glibc220_linaro_x86_64-GPL.txz</span><br><span class="line">tar Jxvf broadwell-gcc493_glibc220_linaro_x86_64-GPL.txz</span><br></pre></td></tr></table></figure>
+
+<h3 id="自制编译工具"><a href="#自制编译工具" class="headerlink" title="自制编译工具"></a>自制编译工具</h3><p>未完成。。。。。。</p>
+<h2 id="调整编译环境"><a href="#调整编译环境" class="headerlink" title="调整编译环境"></a>调整编译环境</h2><p>自定义参数：<br><code>MLIB</code>编译的目标处理器架构；<br><code>TOOLCHAINDIR</code>交叉编译工具所在目录；<br><code>TOOLCHAIN</code>交叉编译工具<code>bin</code>目录所在目录；<br><code>HOST</code>交叉编译工具名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MLIB=x86_64</span><br><span class="line">TOOLCHAINDIR=/mnt</span><br><span class="line">TOOLCHAIN=$TOOLCHAINDIR/x86_64-pc-linux-gnu</span><br><span class="line">HOST=$&#123;MLIB&#125;-pc-linux-gnu</span><br><span class="line"></span><br><span class="line">PATH_A=$PATH</span><br><span class="line">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games</span><br><span class="line">PATH=$TOOLCHAIN/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>完成后运行<code>$HOST-gcc -v</code>；返回版本信息说明交叉编译工具配置正常。</p>
+<h2 id="创建编译目录"><a href="#创建编译目录" class="headerlink" title="创建编译目录"></a>创建编译目录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /mnt/build/shadowsocks-$MLIB</span><br><span class="line">mkdir -p /mnt/build/shadowsocks-$MLIB &amp;&amp; cd /mnt/build/shadowsocks-$MLIB</span><br><span class="line"></span><br><span class="line">BASE=`pwd`</span><br><span class="line">SRC=$BASE/src</span><br><span class="line">PREFIX=$BASE/local</span><br><span class="line">PRE=$BASE/lib</span><br><span class="line"></span><br><span class="line">mkdir -p $SRC $PRE $PREFIX</span><br><span class="line"></span><br><span class="line">PKG_CONFIG_PATH=$PRE/lib/pkgconfig/</span><br><span class="line">LD_LIBRARY_PATH=$PRE/lib/</span><br></pre></td></tr></table></figure>
+
+<h1 id="编译依赖库文件"><a href="#编译依赖库文件" class="headerlink" title="编译依赖库文件"></a>编译依赖库文件</h1><blockquote>
+<ol>
+<li>mbedTLS</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>pcre</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>libsodium</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>libev</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>libudns</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>c-ares</li>
+</ol>
+</blockquote>
+<p><strong>注意：软件所需要的依赖库，请查看软件的文档得知。</strong></p>
+<h2 id="mbedTLS"><a href="#mbedTLS" class="headerlink" title="mbedTLS"></a>mbedTLS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/mbedTLS &amp;&amp; cd $SRC/mbedTLS</span><br><span class="line">ver=2.5.1</span><br><span class="line">wget --no-check-certificate https://tls.mbed.org/download/mbedtls-$ver-gpl.tgz</span><br><span class="line"></span><br><span class="line">tar zxf mbedtls-$ver-gpl.tgz</span><br><span class="line">cd mbedtls-$ver</span><br><span class="line"></span><br><span class="line">CC=$HOST-gcc AR=$HOST-ar LD=$HOST-ld LDFLAGS=-static make DESTDIR=$PREFIX install</span><br></pre></td></tr></table></figure>
+
+<h2 id="pcre"><a href="#pcre" class="headerlink" title="pcre"></a>pcre</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/pcre &amp;&amp; cd $SRC/pcre</span><br><span class="line">ver=8.41</span><br><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$ver.tar.gz</span><br><span class="line"></span><br><span class="line">tar zxf pcre-$ver.tar.gz</span><br><span class="line">cd pcre-$ver</span><br><span class="line"></span><br><span class="line">./configure --host=$HOST --prefix=$PREFIX --disable-shared --enable-utf8 --enable-unicode-properties</span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="libsodium"><a href="#libsodium" class="headerlink" title="libsodium"></a>libsodium</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/libsodium &amp;&amp; cd $SRC/libsodium</span><br><span class="line">ver=1.0.13</span><br><span class="line">wget --no-check-certificate https://download.libsodium.org/libsodium/releases/libsodium-$ver.tar.gz</span><br><span class="line"></span><br><span class="line">tar zxf libsodium-$ver.tar.gz</span><br><span class="line">cd libsodium-$ver</span><br><span class="line"></span><br><span class="line">./configure --host=$HOST --prefix=$PREFIX --disable-ssp --disable-shared</span><br><span class="line"></span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="libev"><a href="#libev" class="headerlink" title="libev"></a>libev</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/libev &amp;&amp; cd $SRC/libev</span><br><span class="line">ver=4.24</span><br><span class="line">wget http://dist.schmorp.de/libev/libev-$ver.tar.gz</span><br><span class="line"></span><br><span class="line">tar zxf libev-$ver.tar.gz</span><br><span class="line">cd libev-$ver</span><br><span class="line"></span><br><span class="line">./configure --host=$HOST --prefix=$PREFIX --disable-shared</span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="libudns"><a href="#libudns" class="headerlink" title="libudns"></a>libudns</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/libudns &amp;&amp; cd $SRC/libudns</span><br><span class="line">git clone git://github.com/shadowsocks/libudns</span><br><span class="line">cd libudns</span><br><span class="line"></span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --host=$HOST --prefix=$PREFIX</span><br><span class="line"></span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="c-ares"><a href="#c-ares" class="headerlink" title="c-ares"></a>c-ares</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/c-ares &amp;&amp; cd $SRC/c-ares</span><br><span class="line">ver=1.13.0</span><br><span class="line">wget https://c-ares.haxx.se/download/c-ares-$ver.tar.gz</span><br><span class="line"></span><br><span class="line">tar zxvf c-ares-$ver.tar.gz</span><br><span class="line">cd c-ares-$ver</span><br><span class="line"></span><br><span class="line">sed -i &#x27;s#\[-\]#[1.13.0]#&#x27; configure.ac</span><br><span class="line">./buildconf</span><br><span class="line">./configure --prefix=$PREFIX --host=$HOST CC=$HOST-gcc --enable-shared=no --enable-static=yes</span><br><span class="line"></span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h1 id="编译软件"><a href="#编译软件" class="headerlink" title="编译软件"></a>编译软件</h1><blockquote>
+<ol start="7">
+<li>shadowsocks-libev</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="8">
+<li>simple-obfs</li>
+</ol>
+</blockquote>
+<h2 id="shadowsocks-libev"><a href="#shadowsocks-libev" class="headerlink" title="shadowsocks-libev"></a>shadowsocks-libev</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/shadowsocks-libev &amp;&amp; cd $SRC/shadowsocks-libev</span><br><span class="line">ver=3.1.0</span><br><span class="line">git clone git://github.com/shadowsocks/shadowsocks-libev</span><br><span class="line">cd shadowsocks-libev</span><br><span class="line">git checkout v$ver -b v$ver</span><br><span class="line">git submodule init &amp;&amp; git submodule update</span><br><span class="line"></span><br><span class="line">./autogen.sh</span><br><span class="line">LIBS=&quot;-lpthread -lm&quot; LDFLAGS=&quot;-Wl,-static -static -static-libgcc -L$PREFIX/lib&quot; CFLAGS=&quot;-I$PREFIX/include&quot; \</span><br><span class="line">	./configure --host=$HOST --prefix=$PREFIX --disable-ssp --disable-documentation \</span><br><span class="line">	--with-mbedtls=$PREFIX --with-pcre=$PREFIX --with-sodium=$PREFIX</span><br><span class="line"></span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="simple-obfs"><a href="#simple-obfs" class="headerlink" title="simple-obfs"></a>simple-obfs</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mkdir $SRC/simple-obfs &amp;&amp; cd $SRC/simple-obfs</span><br><span class="line">ver=0.0.3</span><br><span class="line">git clone https://github.com/shadowsocks/simple-obfs</span><br><span class="line">cd simple-obfs</span><br><span class="line">git checkout v$ver -b v$ver</span><br><span class="line">git submodule init &amp;&amp; git submodule update</span><br><span class="line"></span><br><span class="line">./autogen.sh</span><br><span class="line">LIBS=&quot;-lpthread -lm&quot; LDFLAGS=&quot;-Wl,-static -static -static-libgcc -L$PREFIX/lib&quot; CFLAGS=&quot;-I$PREFIX/include&quot; \</span><br><span class="line">	./configure --host=$HOST --prefix=$PREFIX --disable-ssp --disable-documentation</span><br><span class="line"></span><br><span class="line">make -j`nproc` &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h1 id="去除符号表"><a href="#去除符号表" class="headerlink" title="去除符号表"></a>去除符号表</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp $PREFIX/bin/ss-* $BASE</span><br><span class="line">cp $PREFIX/bin/obfs-* $BASE</span><br><span class="line">$HOST-strip $BASE/obfs-*</span><br><span class="line">$HOST-strip $BASE/ss-*</span><br><span class="line">cd $BASE</span><br></pre></td></tr></table></figure>
+
+<h1 id="还原环境变量"><a href="#还原环境变量" class="headerlink" title="还原环境变量"></a>还原环境变量</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH_A</span><br><span class="line"></span><br><span class="line">echo</span><br><span class="line">echo &quot;Done!&quot;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1392,365 +1539,6 @@
 <p>当交换设备最终确定报文出接口后，将报文发送给主机前，需要将VLAN标记从帧中删除，这样主机接收到的报文都是不带VLAN标记的以太网帧。</p>
 <p>所以，一般情况下，干道链路上传输的都是tagged帧，接入链路上传送到的都是untagged帧。这样处理的好处是：网络中配置的VLAN信息可以被所有交换设备正确处理，而主机不需要了解VLAN信息。</p>
 <hr>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/21/Shell-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Auska">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客">
-      <meta itemprop="description" content="随便写点啥">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/06/21/Shell-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E7%AC%A6/" class="post-title-link" itemprop="url">Shell 基本运算符</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-06-21 10:32:28" itemprop="dateCreated datePublished" datetime="2016-06-21T10:32:28+08:00">2016-06-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-01 10:33:23" itemprop="dateModified" datetime="2022-05-01T10:33:23+08:00">2022-05-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>Shell</code> 和其他编程语言一样，支持多种运算符，包括：</p>
-<ul>
-<li>算数运算符</li>
-<li>关系运算符</li>
-<li>布尔运算符</li>
-<li>字符串运算符</li>
-<li>文件测试运算符</li>
-</ul>
-<!---more--->
-
-<p>原生<code>bash</code>不支持简单的数学运算，但是可以通过其他命令来实现，例如 <code>awk</code> 和 <code>expr</code>，<code>expr</code> 最常用。</p>
-<p><code>expr</code> 是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
-<p>两点注意：</p>
-<ul>
-<li>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</li>
-<li>完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
-</ul>
-<hr>
-<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>下表列出了常用的算术运算符，假定变量 a 为 10，变量 b 为 20：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>+</td>
-<td>加法</td>
-<td>`expr $a + $b` 结果为 30。</td>
-</tr>
-<tr>
-<td>-</td>
-<td>减法</td>
-<td>`expr $a - $b` 结果为 -10。</td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘法</td>
-<td>`expr $a \* $b` 结果为  200。</td>
-</tr>
-<tr>
-<td>&#x2F;</td>
-<td>除法</td>
-<td>`expr $b &#x2F; $a` 结果为 2。</td>
-</tr>
-<tr>
-<td>%</td>
-<td>取余</td>
-<td>`expr $b % $a` 结果为 0。</td>
-</tr>
-<tr>
-<td>&#x3D;</td>
-<td>赋值</td>
-<td>a&#x3D;$b 把变量 b 的值赋给 a。</td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D;</td>
-<td>相等。用于比较两个数字，相同则返回 true。</td>
-<td>[ $a &#x3D;&#x3D; $b ] 返回 false。</td>
-</tr>
-<tr>
-<td>!&#x3D;</td>
-<td>不相等。用于比较两个数字，不相同则返回 true。</td>
-<td>[ $a !&#x3D; $b ] 返回 true。</td>
-</tr>
-</tbody></table>
-<p><strong>注意</strong>:条件表达式要放在方括号之间，并且要有空格，例如: <strong>[$a&#x3D;&#x3D;$b]</strong> 是错误的，必须写成 **[ $a &#x3D;&#x3D; $b ]**。</p>
-<blockquote>
-<p><strong>注意：</strong></p>
-<ul>
-<li>乘号(*)前边必须加反斜杠(\)才能实现乘法运算；</li>
-<li>if…then…fi 是条件语句，后续将会讲解。</li>
-<li>在 MAC 中 shell 的 expr 语法是：**$((表达式))*<em>，此处表达式中的 “</em>“ 不需要转义符号 “\“ 。</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
-<p>下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-eq</td>
-<td>检测两个数是否相等，相等返回 true。</td>
-<td>[ $a -eq $b ] 返回 false。</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>检测两个数是否不相等，不相等返回 true。</td>
-<td>[ $a -ne $b ] 返回 true。</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>检测左边的数是否大于右边的，如果是，则返回 true。</td>
-<td>[ $a -gt $b ] 返回 false。</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>检测左边的数是否小于右边的，如果是，则返回 true。</td>
-<td>[ $a -lt $b ] 返回 true。</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
-<td>[ $a -ge $b ] 返回 false。</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
-<td>[ $a -le $b ] 返回 true。</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h2><p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>!</td>
-<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
-<td>[ ! false ] 返回 true。</td>
-</tr>
-<tr>
-<td>-o</td>
-<td>或运算，有一个表达式为 true 则返回 true。</td>
-<td>[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
-</tr>
-<tr>
-<td>-a</td>
-<td>与运算，两个表达式都为 true 才返回 true。</td>
-<td>[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&amp;&amp;</td>
-<td>逻辑的 AND</td>
-<td>[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</td>
-</tr>
-<tr>
-<td>|</td>
-<td>逻辑的 OR</td>
-<td>[[ $a -lt 100 | $b -gt 100 ]] 返回 true</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h2><p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D;</td>
-<td>检测两个字符串是否相等，相等返回 true。</td>
-<td>[ $a &#x3D; $b ] 返回 false。</td>
-</tr>
-<tr>
-<td>!&#x3D;</td>
-<td>检测两个字符串是否不相等，不相等返回 true。</td>
-<td>[ $a !&#x3D; $b ] 返回 true。</td>
-</tr>
-<tr>
-<td>-z</td>
-<td>检测字符串长度是否为0，为0返回 true。</td>
-<td>[ -z $a ] 返回 false。</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>检测字符串长度是否不为 0，不为 0 返回 true。</td>
-<td>[ -n “$a” ] 返回 true。</td>
-</tr>
-<tr>
-<td>$</td>
-<td>检测字符串是否为空，不为空返回 true。</td>
-<td>[ $a ] 返回 true。</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h2><p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
-<p>属性检测描述如下：</p>
-<table>
-<thead>
-<tr>
-<th>操作符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-b file</td>
-<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
-<td>[ -b $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-c file</td>
-<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
-<td>[ -c $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-d file</td>
-<td>检测文件是否是目录，如果是，则返回 true。</td>
-<td>[ -d $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-f file</td>
-<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
-<td>[ -f $file ] 返回 true。</td>
-</tr>
-<tr>
-<td>-g file</td>
-<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
-<td>[ -g $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-k file</td>
-<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
-<td>[ -k $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-p file</td>
-<td>检测文件是否是有名管道，如果是，则返回 true。</td>
-<td>[ -p $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-u file</td>
-<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
-<td>[ -u $file ] 返回 false。</td>
-</tr>
-<tr>
-<td>-r file</td>
-<td>检测文件是否可读，如果是，则返回 true。</td>
-<td>[ -r $file ] 返回 true。</td>
-</tr>
-<tr>
-<td>-w file</td>
-<td>检测文件是否可写，如果是，则返回 true。</td>
-<td>[ -w $file ] 返回 true。</td>
-</tr>
-<tr>
-<td>-x file</td>
-<td>检测文件是否可执行，如果是，则返回 true。</td>
-<td>[ -x $file ] 返回 true。</td>
-</tr>
-<tr>
-<td>-s file</td>
-<td>检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
-<td>[ -s $file ] 返回 true。</td>
-</tr>
-<tr>
-<td>-e file</td>
-<td>检测文件（包括目录）是否存在，如果是，则返回 true。</td>
-<td>[ -e $file ] 返回 true。</td>
-</tr>
-</tbody></table>
-<p>其他检查符：</p>
-<ul>
-<li><strong>-S</strong>: 判断某文件是否 socket。</li>
-<li><strong>-L</strong>: 检测文件是否存在并且是一个符号链接。</li>
-</ul>
 
       
     </div>
