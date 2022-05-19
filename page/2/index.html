@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -170,6 +170,199 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2017/08/13/Gogs%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/08/13/Gogs%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Gogs使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-13 13:54:27" itemprop="dateCreated datePublished" datetime="2017-08-13T13:54:27+08:00">2017-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-19 19:06:01" itemprop="dateModified" datetime="2022-05-19T19:06:01+08:00">2022-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="什么是-Gogs"><a href="#什么是-Gogs" class="headerlink" title="什么是 Gogs"></a>什么是 Gogs</h1><p>Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。</p>
+<h1 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h1><p>Gogs 默认以 git 用户运行（你应该也不会想一个能修改 ssh 配置的程序以 root 用户运行吧？）。<br>运行 <code>sudo adduser git</code> 新建好 git 用户。<br>su git 以 git 用户登录，到 git 用户的主目录中新建好 .ssh 文件夹。</p>
+<h1 id="下载解包"><a href="#下载解包" class="headerlink" title="下载解包"></a>下载解包</h1><p>我使用的是预编译的二进制包。需要从源码编译的话，请参考一般 Go 语言项目的编译。下载后解包到你喜欢的地方，例如 <code>/usr/share/gogs/</code> 或者 <code>/home/git/gogs/</code> 。文件夹的内容如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls /home/git/gogs/</span><br><span class="line">custom  data  gogs  LICENSE  log  public  README.md  README_ZH.md  scripts  templates</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行安装"><a href="#运行安装" class="headerlink" title="运行安装"></a>运行安装</h1><p>首先建立好数据库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在安装完mysql之后，我们还需要创建一个数据库，将之取名为gogs，</span><br><span class="line"> </span><br><span class="line">CREATE DATABASE gogs CHARACTER SET utf8 COLLATE utf8_bin;</span><br><span class="line">GRANT ALL PRIVILEGES ON gogs.* TO ‘root’@‘localhost’;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<p>在 Gogs 目录的 <code>scripts/mysql.sql</code> 文件是数据库初始化文件。执行 <code>mysql -u root -p &lt; scripts/mysql.sql</code> （需要输入密码）即可初始化好数据库。</p>
+<p>然后登录 MySQL 创建一个新用户 gogs，并将数据库 gogs 的所有权限都赋予该用户。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p</span><br><span class="line">&gt; # （输入密码）</span><br><span class="line">&gt; create user &#x27;gogs&#x27;@&#x27;localhost&#x27; identified by &#x27;密码&#x27;;</span><br><span class="line">&gt; grant all privileges on gogs.* to &#x27;gogs&#x27;@&#x27;localhost&#x27;;</span><br><span class="line">&gt; flush privileges;</span><br><span class="line">&gt; exit;</span><br></pre></td></tr></table></figure>
+<p>运行 gogs web 把 Gogs 运行起来，然后访问 <code>http://服务器IP:3000/</code> 来进行安装，填写好表单之后提交就可以了。</p>
+<p>需要注意的是， 0.6.9.0903 Beta 版本有个 bug，允许在关闭注册的情况下不添加管理员，这样安装完成之后将没有任何用户可以登录。所以请务必在安装界面指定一个管理员帐号。</p>
+<h1 id="配置调整"><a href="#配置调整" class="headerlink" title="配置调整"></a>配置调整</h1><p>配置文件位于 Gogs 目录的 <code>custom/conf/app.ini</code> ，是 INI 格式的文本文件。详细的配置解释和默认值请参考 官方文档 ，其中关键的配置大概是下面这些。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RUN_USER 默认是 git ，指定 Gogs 以哪个用户运行</span><br><span class="line">ROOT 所有仓库的存储根路径</span><br><span class="line">PROTOCOL 如果你使用 nginx 反代的话请使用 http ，如果直接裸跑对外服务的话随意</span><br><span class="line">DOMAIN 域名。会影响 SSH clone 地址</span><br><span class="line">ROOT_URL 完整的根路径，会影响访问时页面上链接的指向，以及 HTTP clone 的地址</span><br><span class="line">HTTP_ADDR 监听地址，使用 nginx 的话建议 127.0.0.1 ，否则 0.0.0.0 也可以</span><br><span class="line">HTTP_PORT 监听端口，默认 3000</span><br><span class="line">INSTALL_LOCK 锁定安装页面</span><br><span class="line">Mailer 相关的选项</span><br><span class="line">其中，Mailer 可以使用 Mailgun 的免费邮件发送服务，将 Mailgun 的 SMTP 配置填入到配置中就好。</span><br></pre></td></tr></table></figure>
+
+<h1 id="nginx-反代"><a href="#nginx-反代" class="headerlink" title="nginx 反代"></a>nginx 反代</h1><p>在 <code>/etc/nginx/sites-available</code> 中新建一个文件，把以下内容写入文件中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    server_name 域名或IP;</span><br><span class="line">    listen 80; # 或者 443，如果你使用 HTTPS 的话</span><br><span class="line">    # ssl on; 是否启用加密连接</span><br><span class="line">    # 如果你使用 HTTPS，还需要填写 ssl_certificate 和 ssl_certificate_key</span><br><span class="line">    location / &#123; # 如果你希望通过子路径访问，此处修改为子路径，注意以 / 开头并以 / 结束</span><br><span class="line">        proxy_pass http://127.0.0.1:3000/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后进入 <code>/etc/nginx/sites-enabled</code> 中，执行 <code>ln -s ../sites-available/配置文件名</code> 启用这个配置文件。</p>
+<p>最后重启 nginx 就好了，Ubuntu 下是 <code>sudo service nginx restart</code> 。</p>
+<h1 id="服务脚本"><a href="#服务脚本" class="headerlink" title="服务脚本"></a>服务脚本</h1><p>此处的服务脚本是针对 Debian 系的 init 脚本。</p>
+<p>其他地方处理办法：</p>
+<p>gogs提供多重方式进行安装，比较常用的有两种。一个是二进制安装，另一个是通过源代码安装。</p>
+<p>然后切换到解压得到的目录之后，直接运行 .&#x2F;gogs web 即可在服务器上运行gogs服务了。</p>
+<p><code>./gogs -h</code> 得到更多的命令行参数说明。</p>
+<p><code>nohup ~/gogs/gogs web &gt; /dev/null 2&gt;&amp;1 &amp;</code><br>启动gogs服务之后，首次运行会让你进行相关的配置。</p>
+<p>主要分为3个配置项，</p>
+<p>一是数据库的配置，包括数据库地址及密码；</p>
+<p>二是服务的应用配置，包括域名，路径等等；</p>
+<p>三是可选邮件服务和管理员配置。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p><a target="_blank" rel="noopener" href="https://gogs.io/docs/advanced/configuration_cheat_sheet">配置文件手册</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2017/08/12/h5ai%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/08/12/h5ai%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">h5ai使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-12 13:54:27" itemprop="dateCreated datePublished" datetime="2017-08-12T13:54:27+08:00">2017-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-19 18:59:39" itemprop="dateModified" datetime="2022-05-19T18:59:39+08:00">2022-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="什么是-h5ai"><a href="#什么是-h5ai" class="headerlink" title="什么是 h5ai"></a>什么是 h5ai</h1><p>H5ai是一款功能强大 php 文件目录列表程序，由德国开发者 Lars Jung 主导开发，它提供多种文件目录列表呈现方式，支持多种主流 Web 服务器，例如 Nginx、Apache、Cherokee、Lighttpd 等，支持多国语言，可以使用本程序在线预览文本、图片、音频、视频等。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="搭建Web服务"><a href="#搭建Web服务" class="headerlink" title="搭建Web服务"></a>搭建Web服务</h2><p>本文使用LNMP环境，使用教程到<a target="_blank" rel="noopener" href="https://lnmp.org/">LNMP</a>查看。<br>并创建一个新虚拟机。</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>编辑Nginx主机文件和PHP配置文件，分别在<code>/usr/local/nginx/conf/vhost/</code>下和<code>/usr/local/php/etc/php.ini</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/your_domain.conf</span><br><span class="line"></span><br><span class="line">将index值修改为</span><br><span class="line">index _h5ai/public/index.php;</span><br><span class="line"></span><br><span class="line">vim /usr/local/php/etc/php.ini</span><br><span class="line">搜索 scandir、exec、passthru，将其从被禁用的函数中删除。</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置虚拟机空间"><a href="#配置虚拟机空间" class="headerlink" title="配置虚拟机空间"></a>配置虚拟机空间</h2><p>去到<a target="_blank" rel="noopener" href="https://larsjung.de/h5ai/">官网</a>下载<code>h5ai</code>，解压到虚拟机空间目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _h5ai</span><br><span class="line">│   ├── CHANGELOG.md</span><br><span class="line">│   ├── private</span><br><span class="line">│   ├── public</span><br><span class="line">│   └── README.md</span><br><span class="line">├── 您要显示的文件夹</span><br><span class="line">│   ├── 子文件夹1</span><br><span class="line">│   ├── 文件1</span><br><span class="line">│   └── 文件2</span><br><span class="line">└── 您要显示的文件夹</span><br><span class="line">├── 文件1</span><br><span class="line">└── 文件2</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启Web服务"><a href="#重启Web服务" class="headerlink" title="重启Web服务"></a>重启Web服务</h2><p>LNMP重启命令<code>lnmp restart</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+-------------------------------------------+</span><br><span class="line">|    Manager for LNMP, Written by Licess    |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">|              http://lnmp.org              |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">Stoping LNMP...</span><br><span class="line">Stoping nginx...  done</span><br><span class="line">[ ok ] Stopping mariadb (via systemctl): mariadb.service.</span><br><span class="line">Gracefully shutting down php-fpm . done</span><br><span class="line">Starting LNMP...</span><br><span class="line">Starting nginx...  done</span><br><span class="line">[ ok ] Starting mariadb (via systemctl): mariadb.service.</span><br><span class="line">Starting php-fpm  done</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.htcp.net/3643.html">云梦小站</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1566,242 +1759,6 @@
 <td>显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</td>
 </tr>
 </tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Auska">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客">
-      <meta itemprop="description" content="随便写点啥">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/" class="post-title-link" itemprop="url">Shell 输入/输出重定向</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-06-05 10:29:58" itemprop="dateCreated datePublished" datetime="2016-06-05T10:29:58+08:00">2016-06-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-01 10:32:06" itemprop="dateModified" datetime="2022-05-01T10:32:06+08:00">2022-05-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>大多数 <code>UNIX </code>系统命令从你的终端接受输入并将所产生的输出发送回到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。</p>
-<!---more--->
-
-<p>重定向命令列表如下：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>command &gt; file</td>
-<td>将输出重定向到 file。</td>
-</tr>
-<tr>
-<td>command &lt; file</td>
-<td>将输入重定向到 file。</td>
-</tr>
-<tr>
-<td>command &gt;&gt; file</td>
-<td>将输出以追加的方式重定向到 file。</td>
-</tr>
-<tr>
-<td>n &gt; file</td>
-<td>将文件描述符为 n 的文件重定向到 file。</td>
-</tr>
-<tr>
-<td>n &gt;&gt; file</td>
-<td>将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
-</tr>
-<tr>
-<td>n &gt;&amp; m</td>
-<td>将输出文件 m 和 n 合并。</td>
-</tr>
-<tr>
-<td>n &lt;&amp; m</td>
-<td>将输入文件 m 和 n 合并。</td>
-</tr>
-<tr>
-<td>&lt;&lt; tag</td>
-<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>需要注意的是文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。</p>
-</blockquote>
-<hr>
-<h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p>重定向一般通过在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:</p>
-<p><code>command1 &gt; file1</code></p>
-<p>上面这个命令执行<code>command1</code>然后将输出的内容存入<code>file1</code>。</p>
-<p>注意任何<code>file1</code>内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用<code>&gt;&gt;</code>操作符。</p>
-<hr>
-<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p>和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
-<p><code>command1 &lt; file1</code></p>
-<p>这样，本来需要从键盘获取输入的命令会转移到文件读取内容。</p>
-<p>注意：输出重定向是大于号<code>&gt;</code>，输入重定向是小于号<code>&lt;</code>。</p>
-<h3 id="重定向深入讲解"><a href="#重定向深入讲解" class="headerlink" title="重定向深入讲解"></a>重定向深入讲解</h3><p>一般情况下，每个 Unix&#x2F;Linux 命令运行时都会打开三个文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</span><br><span class="line">- 标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</span><br><span class="line">- 标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</span><br></pre></td></tr></table></figure>
-<p>默认情况下，<code>command &gt; file</code> 将 <code>stdout</code> 重定向到 <code>file</code>，<code>command &lt; file</code> 将<code>stdin</code> 重定向到 <code>file</code>。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/05/21/TCP-IP-%E9%82%AE%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Auska">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="博客">
-      <meta itemprop="description" content="随便写点啥">
-    </span>
-    
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/05/21/TCP-IP-%E9%82%AE%E4%BB%B6/" class="post-title-link" itemprop="url">TCP/IP 邮件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2016-05-21 10:26:50" itemprop="dateCreated datePublished" datetime="2016-05-21T10:26:50+08:00">2016-05-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-05-01 10:28:21" itemprop="dateModified" datetime="2022-05-01T10:28:21+08:00">2022-05-01</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>电子邮件是 TCP&#x2F;IP 最重要的应用之一。</p>
-<hr>
-<!---more--->
-
-<h2 id="您不会用到…"><a href="#您不会用到…" class="headerlink" title="您不会用到…"></a>您不会用到…</h2><p>当您写邮件时，您不会用到 TCP&#x2F;IP。</p>
-<p>当您写邮件时，您用到的是电子邮件程序，例如莲花软件的 Notes，微软公司出品的 Outlook，或者 Netscape Communicator 等等。</p>
-<hr>
-<h2 id="邮件程序会用到…"><a href="#邮件程序会用到…" class="headerlink" title="邮件程序会用到…"></a>邮件程序会用到…</h2><p>您的电子邮件程序使用不同的 TCP&#x2F;IP 协议：</p>
-<ul>
-<li>使用 SMTP 来发送邮件</li>
-<li>使用 POP 从邮件服务器下载邮件</li>
-<li>使用 IMAP 连接到邮件服务器</li>
-</ul>
-<hr>
-<h2 id="SMTP-简单邮件传输协议"><a href="#SMTP-简单邮件传输协议" class="headerlink" title="SMTP - 简单邮件传输协议"></a>SMTP - 简单邮件传输协议</h2><p>SMTP 协议用于传输电子邮件。SMTP 负责把邮件发送到另一台计算机。</p>
-<p>通常情况下，邮件会被送到一台邮件服务器（SMTP 服务器），然后被送到另一台（或几台）服务器，然后最终被送到它的目的地。</p>
-<p>SMTP 也可以传送纯文本，但是无法传输诸如图片、声音或者电影之类的二进制数据。</p>
-<p>SMTP 使用 MIME 协议通过 TCP&#x2F;IP 网络来发送二进制数据。MIME 协议会将二进制数据转换为纯文本。</p>
-<hr>
-<h2 id="POP-邮局协议"><a href="#POP-邮局协议" class="headerlink" title="POP - 邮局协议"></a>POP - 邮局协议</h2><p>POP 协议被邮件程序用来取回邮件服务器上面的邮件。</p>
-<p>假如您的邮件程序使用 POP，那么一旦它连接上邮件服务器，您的所有的邮件都会被下载到邮件程序中（或者称之为邮件客户端）。</p>
-<hr>
-<h2 id="IMAP-因特网消息访问协议"><a href="#IMAP-因特网消息访问协议" class="headerlink" title="IMAP - 因特网消息访问协议"></a>IMAP - 因特网消息访问协议</h2><p>与 POP 类似，IMAP 协议同样被邮件程序使用。</p>
-<p>IMAP 协议与 POP 协议之间的主要差异是：如果 IMAP 连上了邮件服务器，它不会自动地将邮件下载到邮件程序之中。</p>
-<p>IMAP 使您有能力在下载邮件之前先通过邮件服务器端查看他们。通过 IMAP，您可以选择下载这些邮件或者仅仅是删除它们。比方说您需要从不同的位置访问邮件服务器，但是仅仅希望回到办公室的时候再下载邮件，IMAP 在这种情况下会很有用。</p>
 
       
     </div>
