@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -170,6 +170,150 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/07/04/VLAN-%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/07/04/VLAN-%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">VLAN 基础理论知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-07-04 10:23:48" itemprop="dateCreated datePublished" datetime="2016-07-04T10:23:48+08:00">2016-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-04 10:26:06" itemprop="dateModified" datetime="2022-05-04T10:26:06+08:00">2022-05-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>VLAN（Virtual Local Area Network）即虚拟局域网，是将一个物理的LAN在逻辑上划分成多个广播域的通信技术。VLAN内的主机间可以直接通信，而VLAN间不能直接互通，从而将广播报文限制在一个VLAN内。</p>
+<p>以太网是一种基于CSMA&#x2F;CD（Carrier Sense Multiple Access&#x2F;Collision Detection）的共享通讯介质的数据网络通讯技术。</p>
+<p>当主机数目较多时会导致冲突严重、广播泛滥、性能显著下降甚至造成网络不可用等问题。</p>
+<p>通过交换机实现LAN互连虽然可以解决冲突严重的问题，但仍然不能隔离广播报文和提升网络质量。</p>
+<p>在这种情况下出现了VLAN技术，这种技术可以把一个LAN划分成多个逻辑的VLAN，每个VLAN是一个广播域，VLAN内的主机间通信就和在一个LAN内一样，而VLAN间则不能直接互通，这样，广播报文就被限制在一个VLAN内。</p>
+<h2 id="使用VLAN能给用户带来以下受益"><a href="#使用VLAN能给用户带来以下受益" class="headerlink" title="使用VLAN能给用户带来以下受益"></a>使用VLAN能给用户带来以下受益</h2><ol>
+<li>列表项限制广播域：</li>
+</ol>
+<p>广播域被限制在一个VLAN内，节省了带宽，提高了网络处理能力。</p>
+<ol start="2">
+<li>增强局域网的安全性：</li>
+</ol>
+<p>不同VLAN内的报文在传输时是相互隔离的，即一个VLAN内的用户不能和其它VLAN内的用户直接通信。</p>
+<ol start="3">
+<li>提高了网络的健壮性：</li>
+</ol>
+<p>故障被限制在一个VLAN内，本VLAN内的故障不会影响其他VLAN的正常工作。</p>
+<ol start="4">
+<li>灵活构建虚拟工作组：</li>
+</ol>
+<p>用VLAN可以划分不同的用户到不同的工作组，同一工作组的用户也不必局限于某一固定的物理范围，网络构建和维护更方便灵活。</p>
+<p>在物理vlan中，各主机可以直接通过网络体系结构中的第二层（数据链路层）进行通信，但划分vlan后，不同vlan中的主机不可用直接通过第二层进行通信，必须通过第三层（网络层）才能通信。</p>
+<p>从物理来看待vlan：</p>
+<p>即同一台交换机上不同的vlan间不通；处于同一IP网段不同vlan位于不同交换机有时是可以直接互通的；从逻辑来看待vlan：一个vlan可以跨越多台物理交换机，即vlan的中继（trunk）功能。</p>
+<p><strong>同一物理交换机不可能存在两个相同的vlan；不同交换机可以有相同的vlan，且不同物理交换机上的相同vlan间一般情况下是可以直接互访的（前提是他们都位于同一IP网段，且物理连接端口上允许这些vlan通过）；位于不同交换机上不同vlan处于同一IP网段，且交换机之间连接的两个端口分别隶属于双方vlan的access或不带vlan标签的hybrid端口，则这两个vlan也可以直接通信。</strong></p>
+<h2 id="Vlan中继"><a href="#Vlan中继" class="headerlink" title="Vlan中继"></a>Vlan中继</h2><p>一台交换机上的vlan配置信息可以传播、复制到网络中相连的其他交换机上，采用GVRP自动注册来实现</p>
+<h2 id="中继端口"><a href="#中继端口" class="headerlink" title="中继端口"></a>中继端口</h2><p>trunk（中继）端口指在一个交换机端口允许一个或多个vlan通信到达网络中相连的另一台交换机上<strong>相同的vlan中</strong>。</p>
+<p>vlanID取值范围0-4095,0和4095为协议保留。</p>
+<hr>
+<h1 id="VLAN基本概念"><a href="#VLAN基本概念" class="headerlink" title="VLAN基本概念"></a>VLAN基本概念</h1><h2 id="VLAN的帧格式"><a href="#VLAN的帧格式" class="headerlink" title="VLAN的帧格式"></a>VLAN的帧格式</h2><p>传统的以太网数据帧在目的MAC地址和源MAC地址之后封装的是上层协议的类型字段。</p>
+<p>802.1Q Tag包含4个字段，各字段解释如下所示：</p>
+<ol>
+<li>TPID</li>
+</ol>
+<p>长度2bytes，Tag Protocol Identifier（标签协议标识符），表示帧类型。取值为0x8100时表示802.1Q Tag帧。如果不支持802.1Q的设备收到这样的帧，会将其丢弃。</p>
+<ol start="2">
+<li>PRI</li>
+</ol>
+<p>长度3bits，Priority，表示帧的优先级。 取值范围为0～7，值越大优先级越高。用于当交换机阻塞时，优先发送优先级高的数据帧。</p>
+<ol start="3">
+<li>CFI</li>
+</ol>
+<p>长度1bit ，Canonical Format Indicator（标准格式指示位），表示MAC地址是否是经典格式。 CFI为0说明是经典格式，CFI为1表示为非经典格式。用于兼容以太网和令牌环网。在以太网中，CFI的值为0。</p>
+<ol start="4">
+<li>VID</li>
+</ol>
+<p>长度12bits，VLAN ID，表示该帧所属的VLAN。VLAN ID取值范围是0～4095。由于0和4095为协议保留取值，所以VLAN ID的有效取值范围是1～4094。</p>
+<p>每台支持802.1Q协议的交换机发送的数据包都会包含VLAN ID，以指明交换机属于哪一个VLAN。因此，在一个VLAN交换网络中，以太网帧有以下两种形式：</p>
+<p>有标记帧（tagged frame）：</p>
+<p>加入了4字节802.1Q Tag的帧</p>
+<p>无标记帧（untagged frame）：</p>
+<p>原始的未加入4字节802.1Q Tag的帧</p>
+<h2 id="链路类型"><a href="#链路类型" class="headerlink" title="链路类型"></a>链路类型</h2><ol>
+<li>接入链路（Access Link）：</li>
+</ol>
+<p>用于连接用户主机和交换机的链路。</p>
+<p>通常情况下，主机并不需要知道自己属于哪个VLAN，主机硬件通常也不能识别带有VLAN标记的帧。因此，主机发送和接收的帧都是untagged帧。</p>
+<ol start="2">
+<li>干道链路（Trunk Link）：</li>
+</ol>
+<p>用于交换机间的互连或交换机与路由器之间的连接。</p>
+<p>干道链路可以承载多个不同VLAN数据，数据帧在干道链路传输时，干道链路的两端设备需要能够识别数据帧属于哪个VLAN，所以在干道链路上传输的帧都是Tagged帧。</p>
+<p> 说明：</p>
+<p>对于主机来说，它不需要知道VLAN的存在。主机发出的是untagged报文。</p>
+<p>交换设备接收到报文后，根据配置规则（如接口信息）判断出报文所属的VLAN后，再进行处理。</p>
+<p>如果报文需要通过另一台交换机转发，则该报文必须通过干道链路透传到对端交换设备上。为了保证其它交换设备能够正确处理报文中的VLAN信息，在干道链路上传输的报文必须都打上了VLAN标记。</p>
+<p>当交换设备最终确定报文出接口后，将报文发送给主机前，需要将VLAN标记从帧中删除，这样主机接收到的报文都是不带VLAN标记的以太网帧。</p>
+<p>所以，一般情况下，干道链路上传输的都是tagged帧，接入链路上传送到的都是untagged帧。这样处理的好处是：网络中配置的VLAN信息可以被所有交换设备正确处理，而主机不需要了解VLAN信息。</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

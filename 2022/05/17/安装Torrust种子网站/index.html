@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"auska.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍Torrust是一个开源项目，它为您提供了托管自己的（私人）BitTorrent跟踪器和在线洪流索引所需的所有工具。 项目结构Torrust 分为两个独立的应用程序  Torrust Tracker：一款高性能且功能丰富的（私有）BitTorrent跟踪器。 Torrust Index：一个依赖于Torrust跟踪器的种子索引网站。特征  列表项自托管高性能 BitTorrent 跟踪器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装Torrust种子网站">
+<meta property="og:url" content="https://auska.github.io/2022/05/17/%E5%AE%89%E8%A3%85Torrust%E7%A7%8D%E5%AD%90%E7%BD%91%E7%AB%99/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="介绍Torrust是一个开源项目，它为您提供了托管自己的（私人）BitTorrent跟踪器和在线洪流索引所需的所有工具。 项目结构Torrust 分为两个独立的应用程序  Torrust Tracker：一款高性能且功能丰富的（私有）BitTorrent跟踪器。 Torrust Index：一个依赖于Torrust跟踪器的种子索引网站。特征  列表项自托管高性能 BitTorrent 跟踪器。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-17T12:05:21.000Z">
+<meta property="article:modified_time" content="2022-05-19T12:07:19.902Z">
+<meta property="article:author" content="Auska">
+<meta property="article:tag" content="BT">
+<meta property="article:tag" content="Torrust">
+<meta property="article:tag" content="PT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://auska.github.io/2022/05/17/%E5%AE%89%E8%A3%85Torrust%E7%A7%8D%E5%AD%90%E7%BD%91%E7%AB%99/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://auska.github.io/2022/05/17/%E5%AE%89%E8%A3%85Torrust%E7%A7%8D%E5%AD%90%E7%BD%91%E7%AB%99/","path":"2022/05/17/安装Torrust种子网站/","title":"安装Torrust种子网站"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安装Torrust种子网站 | 博客</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81"><span class="nav-number">1.2.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Torrust-Tracker"><span class="nav-number">2.</span> <span class="nav-text">安装Torrust Tracker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">安装依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E9%80%89-%E4%BD%A0%E7%9A%84-SSL-%E8%AF%81%E4%B9%A6"><span class="nav-number">2.1.1.</span> <span class="nav-text">(可选) 你的 SSL 证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-NGINX"><span class="nav-number">2.2.</span> <span class="nav-text">安装 NGINX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-Tmux-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">与 Tmux 的用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Torrust"><span class="nav-number">3.</span> <span class="nav-text">安装Torrust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%BF%85%E5%A4%87%E7%BB%84%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">安装必备组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%90%8E%E7%AB%AF"><span class="nav-number">3.2.</span> <span class="nav-text">安装后端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%90%8E%E7%AB%AF"><span class="nav-number">3.3.</span> <span class="nav-text">运行后端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Tmux-%E8%BF%90%E8%A1%8C%E5%90%8E%E7%AB%AF"><span class="nav-number">3.4.</span> <span class="nav-text">使用 Tmux 运行后端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E7%AB%AF"><span class="nav-number">3.5.</span> <span class="nav-text">安装前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NGINX-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.5.1.</span> <span class="nav-text">NGINX 配置</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Auska"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Auska</p>
+  <div class="site-description" itemprop="description">随便写点啥</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Auska" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Auska" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luodan0709@live.cn" title="E-Mail → mailto:luodan0709@live.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2022/05/17/%E5%AE%89%E8%A3%85Torrust%E7%A7%8D%E5%AD%90%E7%BD%91%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安装Torrust种子网站 | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装Torrust种子网站
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-17 20:05:21" itemprop="dateCreated datePublished" datetime="2022-05-17T20:05:21+08:00">2022-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-19 20:07:19" itemprop="dateModified" datetime="2022-05-19T20:07:19+08:00">2022-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Torrust是一个开源项目，它为您提供了托管自己的（私人）BitTorrent跟踪器和在线洪流索引所需的所有工具。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Torrust 分为两个独立的应用程序</p>
+<ul>
+<li><code>Torrust Tracker</code>：一款高性能且功能丰富的（私有）BitTorrent跟踪器。</li>
+<li><code>Torrust Index</code>：一个依赖于Torrust跟踪器的种子索引网站。<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2></li>
+<li><input checked="" disabled="" type="checkbox"> 列表项自托管高性能 BitTorrent 跟踪器。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项支持公共，私人和白名单跟踪器模式。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项用于将种子列入白名单和发布跟踪器密钥的 API。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项电子邮件&#x2F;密码身份验证（可选电子邮件验证）。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项种子上传&#x2F;下载（包括磁力链接）。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项洪流审核。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项可定制的洪流类别。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项无需外部服务。</li>
+<li><input checked="" disabled="" type="checkbox"> 列表项完全用 Rust 编写！</li>
+</ul>
+<hr>
+<h1 id="安装Torrust-Tracker"><a href="#安装Torrust-Tracker" class="headerlink" title="安装Torrust Tracker"></a>安装Torrust Tracker</h1><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><ul>
+<li>OpenSSL:<ul>
+<li>Arch Linux: <code>sudo pacman -S pkg-config openssl</code></li>
+<li>Debian&#x2F;Ubuntu: <code>sudo apt-get install pkg-config libssl-dev</code></li>
+</ul>
+</li>
+<li>SQLite3:<ul>
+<li>Debian&#x2F;Ubuntu: <code>sudo apt-get install libsqlite3-dev</code></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>克隆源码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/torrust</span><br><span class="line">cd /opt/torrust</span><br><span class="line">git clone https://github.com/torrust/torrust-tracker.git </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>编译源码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd torrust-tracker</span><br><span class="line">cargo build --release </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果有错，请运行 <code>rustup update stable</code> 再编译</p>
+</blockquote>
+<ol start="3">
+<li>运行一次生成 <code>config.toml</code> 文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/release/torrust-tracker </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编辑配置文件<code>config.toml</code>  (查看: <a target="_blank" rel="noopener" href="https://torrust.com/torrust-tracker/config/">配置文档</a>)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano config.toml </span><br></pre></td></tr></table></figure>
+
+<p>模板 <code>config.toml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">log_level = &quot;info&quot;</span><br><span class="line">mode = &quot;private&quot;</span><br><span class="line">db_driver = &quot;Sqlite3&quot;</span><br><span class="line">db_path = &quot;data.db&quot;</span><br><span class="line">announce_interval = 120</span><br><span class="line">min_announce_interval = 120</span><br><span class="line">max_peer_timeout = 900</span><br><span class="line">on_reverse_proxy = false</span><br><span class="line">external_ip = &quot;0.0.0.0&quot;</span><br><span class="line">tracker_usage_statistics = true</span><br><span class="line">persistent_torrent_completed_stat = false</span><br><span class="line">inactive_peer_cleanup_interval = 600</span><br><span class="line">remove_peerless_torrents = true</span><br><span class="line"></span><br><span class="line">[[udp_trackers]]</span><br><span class="line">enabled = false</span><br><span class="line">bind_address = &quot;0.0.0.0:6969&quot;</span><br><span class="line"></span><br><span class="line">[[http_trackers]]</span><br><span class="line">enabled = true</span><br><span class="line">bind_address = &quot;0.0.0.0:6969&quot;</span><br><span class="line">ssl_enabled = false</span><br><span class="line">ssl_cert_path = &quot;&quot;</span><br><span class="line">ssl_key_path = &quot;&quot;</span><br><span class="line"></span><br><span class="line">[http_api]</span><br><span class="line">enabled = true</span><br><span class="line">bind_address = &quot;127.0.0.1:1212&quot;</span><br><span class="line"></span><br><span class="line">[http_api.access_tokens]</span><br><span class="line">admin = &quot;MyAccessToken&quot; </span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>打开 <code>bind_address</code>端口 (default: 6969):</li>
+</ol>
+<blockquote>
+<p>如果要配置<strong>NGINX</strong>请跳过此步骤。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 6969 </span><br></pre></td></tr></table></figure>
+
+<h3 id="可选-你的-SSL-证书"><a href="#可选-你的-SSL-证书" class="headerlink" title="(可选) 你的 SSL 证书"></a>(可选) 你的 SSL 证书</h3><blockquote>
+<p>如果要配置<strong>NGINX</strong>请跳过此步骤。</p>
+</blockquote>
+<ol>
+<li>编辑 <code>nano.config</code> 文件并更改以下设置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[[http_trackers]]</span><br><span class="line">...</span><br><span class="line">ssl_enabled = true</span><br><span class="line">ssl_cert_path = &quot;YOUR_CERT_PATH&quot;</span><br><span class="line">ssl_key_path = &quot;YOUR_CERT_KEY_PATH&quot;</span><br><span class="line">... </span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-NGINX"><a href="#安装-NGINX" class="headerlink" title="安装 NGINX"></a>安装 NGINX</h2><p>按照上述安装步骤 1-4 进行操作。</p>
+<ol start="5">
+<li>更改以下设置<code>config.toml</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">on_reverse_proxy = true</span><br><span class="line">...</span><br><span class="line">[[http_trackers]]</span><br><span class="line">bind_address = &quot;127.0.0.1:6969&quot;</span><br><span class="line">ssl_enabled = false</span><br><span class="line">... </span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>为跟踪器创建一个 NGINX 配置（例如：tracker.torrust.com）</li>
+</ol>
+<blockquote>
+<p>请务必改用您自己的域名。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/nginx/sites-available/tracker.torrust.com </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入示例配置</li>
+</ul>
+<blockquote>
+<p>请勿复制 SSL 注释，并确保将域名更改为您的域名。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># without SSL</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name tracker.torrust.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-For $remote_addr;</span><br><span class="line">        proxy_pass http://127.0.0.1:6969;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>确保更改<code>ssl_certificate</code>路径。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># with SSL</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name tracker.torrust.com;</span><br><span class="line"></span><br><span class="line">    return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name tracker.torrust.com;</span><br><span class="line"></span><br><span class="line">    ssl_certificate CERT_PATH</span><br><span class="line">    ssl_certificate_key CERT_KEY_PATH; </span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header X-Forwarded-For $remote_addr;</span><br><span class="line">        proxy_pass http://127.0.0.1:6969;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>通过创建指向<code>sites-enabled</code> 目录中配置的符号链接来启用配置</li>
+</ol>
+<blockquote>
+<p>将 tracker.torrust.com 替换为您的域&#x2F;NGINX 配置。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /etc/nginx/sites-available/tracker.torrust.com /etc/nginx/sites-enabled/ </span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>在此之后，您可以通过<code>nginx -t</code>执行来测试配置的有效性，如果配置有效，您可以安全地重新加载Nginx以使新配置处于活动状态：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx </span><br></pre></td></tr></table></figure>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ol>
+<li>在文件夹中，您可以像这样运行torrust跟踪器</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./target/release/torrust-tracker </span><br></pre></td></tr></table></figure>
+
+<h2 id="与-Tmux-的用法"><a href="#与-Tmux-的用法" class="headerlink" title="与 Tmux 的用法"></a>与 Tmux 的用法</h2><ol>
+<li>打开新的 <code>Tmux</code> 会话</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s torrust-tracker </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在 <code>Tmux</code> 会话中，运行 <code>torrust</code> 跟踪器</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/torrust/torrust-tracker</span><br><span class="line">./target/release/torrust-tracker </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>从 <code>Tmux</code> 会话中分离</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CTRL+B</span><br><span class="line">D </span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="安装Torrust"><a href="#安装Torrust" class="headerlink" title="安装Torrust"></a>安装Torrust</h1><h2 id="安装必备组件"><a href="#安装必备组件" class="headerlink" title="安装必备组件"></a>安装必备组件</h2><p>前端不能单独运行，需要外部<strong>Web</strong>服务器，如<strong>Apache</strong>或<strong>NGINX</strong>。在本指南中，我们将使用<strong>Nginx</strong>。</p>
+<ul>
+<li>Node (version &gt;&#x3D; 12.0.0)<ul>
+<li>Debian&#x2F;Ubuntu:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_12.x | bash -</span><br><span class="line">apt-get install -y nodejs </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>NPM<ul>
+<li>Debian&#x2F;Ubuntu: <code>sudo apt-get install npm</code></li>
+</ul>
+</li>
+<li>NGINX:<ul>
+<li>Debian&#x2F;Ubuntu: <code>sudo apt install nginx</code></li>
+<li>有关其他发行版：请参阅 <a target="_blank" rel="noopener" href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">Nginx 安装教程</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="安装后端"><a href="#安装后端" class="headerlink" title="安装后端"></a>安装后端</h2><ol>
+<li>创建 torrust 安装目录（如果尚未创建）并克隆存储库</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/torrust</span><br><span class="line">cd /opt/torrust</span><br><span class="line">git clone https://github.com/torrust/torrust.git </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>切换到后端目录并创建一个名<code>.env</code>为：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd torrust/backend</span><br><span class="line">echo &quot;DATABASE_URL=sqlite://data.db?mode=rwc&quot; &gt; .env </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>然后，我们必须创建 SQLite 数据库并运行迁移。安装<code>sqlx-cli</code>并创建数据库</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cargo install sqlx-cli</span><br><span class="line">sqlx db setup </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>现在构建后端</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo build --release </span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>运行后端一次以生成 <code>config.toml</code> 文件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/torrust/torrust/backend</span><br><span class="line">./target/release/torrust </span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>然后编辑<code>config.toml</code>并更改至少以下键：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano config.toml </span><br></pre></td></tr></table></figure>
+
+<p><code>[tracker]</code></p>
+<ul>
+<li><code>url</code>: 设置为跟踪器的连接字符串。例如： <code>udp://TRACKER_IP:6969</code>.</li>
+<li><code>api_url</code>: 设置为跟踪器 <code>API URL</code>。默认：<code>http://localhost:1212</code>.</li>
+<li><code>token</code>: 将其设置为 <code>Torrust Tracker</code> <code>config.toml</code> 中的访问令牌。</li>
+</ul>
+<p><code>[net]</code></p>
+<ul>
+<li><code>port</code>: 默认设置为 <code>3000</code> 。如果您选择其他端口，请确保也更改Nginx配置。</li>
+</ul>
+<p><code>[auth]</code></p>
+<ul>
+<li><code>secret_key</code>: 设置为安全随机生成的字符串。</li>
+</ul>
+<h2 id="运行后端"><a href="#运行后端" class="headerlink" title="运行后端"></a>运行后端</h2><ol>
+<li>使用以下命令运行后端</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/torrust/torrust/backend</span><br><span class="line">./target/release/torrust </span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Tmux-运行后端"><a href="#使用-Tmux-运行后端" class="headerlink" title="使用 Tmux 运行后端"></a>使用 <code>Tmux</code> 运行后端</h2><ol>
+<li>使用 <code>Tmux</code> 运行后端</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s torrust-index</span><br><span class="line">cd /opt/torrust/torrust/backend</span><br><span class="line">./target/release/torrust </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>按下<code>CTRL+B D</code>以退出 tmux 会话而不终止它。</p>
+</blockquote>
+<h2 id="安装前端"><a href="#安装前端" class="headerlink" title="安装前端"></a>安装前端</h2><ol>
+<li>首先创建一个名为<code>.env</code>的文件</li>
+</ol>
+<blockquote>
+<p>请务必更改域名。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/torrust/torrust/frontend</span><br><span class="line">echo &quot;VITE_API_BASE_URL=https://YOUR_DOMAIN/api&quot; &gt; .env </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>构建前端</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run build </span><br></pre></td></tr></table></figure>
+
+<p>成功完成此命令后， <code>dist</code> 该文件夹中将包含前端的构建版本。这些文件将由<code>Nginx</code>在后续步骤中提供。</p>
+<h3 id="NGINX-配置"><a href="#NGINX-配置" class="headerlink" title="NGINX 配置"></a>NGINX 配置</h3><ol>
+<li>创建一个包含以下内容<code>/etc/nginx/sites-available/torrust.conf</code>文件</li>
+</ol>
+<blockquote>
+<p>需要更改 YOUR_DOMAIN x2, CERT_PATH 和 CERT_KEY_PATH.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name YOUR_DOMAIN;</span><br><span class="line"></span><br><span class="line">    return 301 https://$host$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name YOUR_DOMAIN;</span><br><span class="line"></span><br><span class="line">    ssl_certificate CERT_PATH;</span><br><span class="line">    ssl_certificate_key CERT_KEY_PATH;</span><br><span class="line"></span><br><span class="line">    root /opt/torrust/torrust/frontend/dist/;</span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /api/ &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:3000/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过在<code>sites-enabled</code>目录中创建指向配置的符号链接来启用配置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /etc/nginx/sites-available/torrust.conf /etc/nginx/sites-enabled/ </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在此之后，您可以通过<code>nginx -t</code>执行来测试配置的有效性，如果配置有效，您可以安全地重新加载<code>Nginx</code>以使新配置处于活动状态</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx </span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/BT/" rel="tag"># BT</a>
+              <a href="/tags/Torrust/" rel="tag"># Torrust</a>
+              <a href="/tags/PT/" rel="tag"># PT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/30/ZFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BE%88%E9%80%82%E5%90%88%E6%8C%82PT/" rel="prev" title="ZFS文件系统很适合挂PT">
+                  <i class="fa fa-chevron-left"></i> ZFS文件系统很适合挂PT
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/05/19/%E5%AE%89%E8%A3%85rTorrent%E5%BF%83%E5%BE%97/" rel="next" title="安装rTorrent心得">
+                  安装rTorrent心得 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Auska</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
