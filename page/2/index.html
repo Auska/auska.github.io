@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -170,6 +170,141 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/06/05/Shell-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/" class="post-title-link" itemprop="url">Shell 输入/输出重定向</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-06-05 10:29:58" itemprop="dateCreated datePublished" datetime="2016-06-05T10:29:58+08:00">2016-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-05-01 10:32:06" itemprop="dateModified" datetime="2022-05-01T10:32:06+08:00">2022-05-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>大多数 <code>UNIX </code>系统命令从你的终端接受输入并将所产生的输出发送回到您的终端。一个命令通常从一个叫标准输入的地方读取输入，默认情况下，这恰好是你的终端。同样，一个命令通常将其输出写入到标准输出，默认情况下，这也是你的终端。</p>
+<!---more--->
+
+<p>重定向命令列表如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file。</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file。</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>需要注意的是文件描述符 0 通常是标准输入（STDIN），1 是标准输出（STDOUT），2 是标准错误输出（STDERR）。</p>
+</blockquote>
+<hr>
+<h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p>重定向一般通过在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:</p>
+<p><code>command1 &gt; file1</code></p>
+<p>上面这个命令执行<code>command1</code>然后将输出的内容存入<code>file1</code>。</p>
+<p>注意任何<code>file1</code>内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用<code>&gt;&gt;</code>操作符。</p>
+<hr>
+<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p>和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
+<p><code>command1 &lt; file1</code></p>
+<p>这样，本来需要从键盘获取输入的命令会转移到文件读取内容。</p>
+<p>注意：输出重定向是大于号<code>&gt;</code>，输入重定向是小于号<code>&lt;</code>。</p>
+<h3 id="重定向深入讲解"><a href="#重定向深入讲解" class="headerlink" title="重定向深入讲解"></a>重定向深入讲解</h3><p>一般情况下，每个 Unix&#x2F;Linux 命令运行时都会打开三个文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 标准输入文件(stdin)：stdin的文件描述符为0，Unix程序默认从stdin读取数据。</span><br><span class="line">- 标准输出文件(stdout)：stdout 的文件描述符为1，Unix程序默认向stdout输出数据。</span><br><span class="line">- 标准错误文件(stderr)：stderr的文件描述符为2，Unix程序会向stderr流中写入错误信息。</span><br></pre></td></tr></table></figure>
+<p>默认情况下，<code>command &gt; file</code> 将 <code>stdout</code> 重定向到 <code>file</code>，<code>command &lt; file</code> 将<code>stdin</code> 重定向到 <code>file</code>。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

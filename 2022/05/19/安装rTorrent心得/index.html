@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"auska.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="什么是rTorrentrTorrent是一个非常简洁、优秀、非常轻量的命令行BT下载客户端，和Aria2一样，既可以使用命令行下载，也可以配合自己的Web前端进行控制操作。很多都喜欢用rTorrent配合前端ruTorrent一起使用，毕竟有个图形界面方便些，不过配置起来挺麻烦的，博主觉得单独使用rtorrent下载BT文件速度还可以，操作也不难，关键安装很简单，很适合临时下载BT文件的人。 rT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装rTorrent心得">
+<meta property="og:url" content="https://auska.github.io/2022/05/19/%E5%AE%89%E8%A3%85rTorrent%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:site_name" content="博客">
+<meta property="og:description" content="什么是rTorrentrTorrent是一个非常简洁、优秀、非常轻量的命令行BT下载客户端，和Aria2一样，既可以使用命令行下载，也可以配合自己的Web前端进行控制操作。很多都喜欢用rTorrent配合前端ruTorrent一起使用，毕竟有个图形界面方便些，不过配置起来挺麻烦的，博主觉得单独使用rtorrent下载BT文件速度还可以，操作也不难，关键安装很简单，很适合临时下载BT文件的人。 rT">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-19T07:25:02.000Z">
+<meta property="article:modified_time" content="2022-05-19T07:29:40.038Z">
+<meta property="article:author" content="Auska">
+<meta property="article:tag" content="rtorrent">
+<meta property="article:tag" content="nas">
+<meta property="article:tag" content="pt">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://auska.github.io/2022/05/19/%E5%AE%89%E8%A3%85rTorrent%E5%BF%83%E5%BE%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://auska.github.io/2022/05/19/%E5%AE%89%E8%A3%85rTorrent%E5%BF%83%E5%BE%97/","path":"2022/05/19/安装rTorrent心得/","title":"安装rTorrent心得"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安装rTorrent心得 | 博客</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFrTorrent"><span class="nav-number">1.</span> <span class="nav-text">什么是rTorrent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rTorrent%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">rTorrent的优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">版本选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85rTorrent"><span class="nav-number">4.</span> <span class="nav-text">安装rTorrent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E6%A0%B8%E8%B0%83%E6%95%B4"><span class="nav-number">5.1.</span> <span class="nav-text">内核调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">我的配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E8%BF%81%E7%A7%BB%E7%A7%8D%E5%AD%90%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">批量迁移种子文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rtorrent-fast-resume-pl"><span class="nav-number">6.1.</span> <span class="nav-text">rtorrent_fast_resume.pl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="nav-number">6.1.1.</span> <span class="nav-text">用法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="nav-number">6.1.2.</span> <span class="nav-text">安装：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E8%84%9A%E6%9C%AC"><span class="nav-number">6.2.</span> <span class="nav-text">迁移脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">6.2.1.</span> <span class="nav-text">用法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BUG%E4%B8%8E%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">BUG与处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#random-device"><span class="nav-number">7.1.</span> <span class="nav-text">random_device</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#systemd%E6%97%A5%E5%BF%97"><span class="nav-number">7.1.1.</span> <span class="nav-text">systemd日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="nav-number">7.1.2.</span> <span class="nav-text">处理方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="nav-number">7.1.3.</span> <span class="nav-text">处理方式二</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Auska"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Auska</p>
+  <div class="site-description" itemprop="description">随便写点啥</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Auska" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Auska" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luodan0709@live.cn" title="E-Mail → mailto:luodan0709@live.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://auska.github.io/2022/05/19/%E5%AE%89%E8%A3%85rTorrent%E5%BF%83%E5%BE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Auska">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客">
+      <meta itemprop="description" content="随便写点啥">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安装rTorrent心得 | 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装rTorrent心得
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-19 15:25:02 / 修改时间：15:29:40" itemprop="dateCreated datePublished" datetime="2022-05-19T15:25:02+08:00">2022-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="什么是rTorrent"><a href="#什么是rTorrent" class="headerlink" title="什么是rTorrent"></a>什么是rTorrent</h1><p>rTorrent是一个非常简洁、优秀、非常轻量的命令行BT下载客户端，和Aria2一样，既可以使用命令行下载，也可以配合自己的Web前端进行控制操作。很多都喜欢用rTorrent配合前端ruTorrent一起使用，毕竟有个图形界面方便些，不过配置起来挺麻烦的，博主觉得单独使用rtorrent下载BT文件速度还可以，操作也不难，关键安装很简单，很适合临时下载BT文件的人。</p>
+<h1 id="rTorrent的优缺点"><a href="#rTorrent的优缺点" class="headerlink" title="rTorrent的优缺点"></a>rTorrent的优缺点</h1><p>优点：</p>
+<ul>
+<li>性能极高，资源占用少（相当于transmission资源消耗，却拥有不不弱于qbittorrent的速度）</li>
+<li>包含丰富的命令，对于保种、做种有极大的自由度</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>安装配置极其复杂</li>
+</ul>
+<h1 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h1><p>有两版本分别是<a target="_blank" rel="noopener" href="https://github.com/rakshasa/rtorrent">官方版</a>与<a target="_blank" rel="noopener" href="https://github.com/jesec/rtorrent">jesec</a>，后者提供了更加友好的面向用户的其他功能、优化以及与 RPC 接口的现代用户的更好集成；这里主要讨论<strong>jesec</strong>的版本。</p>
+<h1 id="安装rTorrent"><a href="#安装rTorrent" class="headerlink" title="安装rTorrent"></a>安装rTorrent</h1><p>安装完全静态的二进制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Install rTorrent to /usr/local/bin/rtorrent</span><br><span class="line"># rtorrent-linux-amd64 and rtorrent-linux-arm64 are available</span><br><span class="line">sudo wget https://github.com/jesec/rtorrent/releases/latest/download/rtorrent-linux-amd64 -O /usr/local/bin/rtorrent</span><br><span class="line"></span><br><span class="line"># Make it executable</span><br><span class="line">sudo chmod +x /usr/local/bin/rtorrent</span><br><span class="line"></span><br><span class="line"># Default configuration</span><br><span class="line"></span><br><span class="line">sudo mkdir -p /etc/rtorrent</span><br><span class="line">sudo wget https://github.com/jesec/rtorrent/releases/latest/download/rtorrent.rc -O /etc/rtorrent/rtorrent.rc</span><br><span class="line"></span><br><span class="line"># Install as a systemd service (optional)</span><br><span class="line"># This example uses &quot;download&quot; user. Replace it with the an existing user that rTorrent should run with.</span><br><span class="line">sudo wget https://github.com/jesec/rtorrent/releases/latest/download/rtorrent@.service -O /etc/systemd/system/rtorrent@.service</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl enable rtorrent@download</span><br><span class="line">sudo systemctl start rtorrent@download</span><br></pre></td></tr></table></figure>
+<p>其它安装方式，请自行搜索。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>rTorrent 尝试从多个位置加载配置文件：</p>
+<ul>
+<li><code>$XDG_CONFIG_HOME/rtorrent/rtorrent.rc</code> （最高优先级）</li>
+<li><code>$HOME/.config/rtorrent/rtorrent.rc</code></li>
+<li><code>$HOME/.rtorrent.rc</code></li>
+<li><code>/etc/rtorrent/rtorrent.rc</code> （最低优先级）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/jesec/rtorrent/blob/master/doc/rtorrent.rc">配置模板</a></p>
+<h2 id="内核调整"><a href="#内核调整" class="headerlink" title="内核调整"></a>内核调整</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># /etc/security/limits.conf</span><br><span class="line">* - nofile 51200</span><br><span class="line"></span><br><span class="line"># /etc/sysctl.conf (XanMod Kernel)</span><br><span class="line">vm.swappiness=10</span><br><span class="line"></span><br><span class="line">net.core.default_qdisc=fq_pie</span><br><span class="line">net.ipv4.tcp_congestion_control=bbr2</span><br><span class="line"></span><br><span class="line"># Maximum Socket Receive Buffer. 16MB per socket - which sounds like a lot, but will virtually never consume that much. Default: 212992</span><br><span class="line">net.core.rmem_max = 16777216</span><br><span class="line"># Maximum Socket Send Buffer. 16MB per socket - which sounds like a lot, but will virtually never consume that much. Default: 212992</span><br><span class="line">net.core.wmem_max = 16777216</span><br><span class="line"># Increase the write-buffer-space allocatable: min 4KB, def 12MB, max 16MB. Default: 4096 16384 4194304</span><br><span class="line">net.ipv4.tcp_wmem = 4096 12582912 16777216</span><br><span class="line"># Increase the read-buffer-space allocatable: min 4KB, def 12MB, max 16MB. Default: 4096 16384 4194304</span><br><span class="line">net.ipv4.tcp_rmem = 4096 12582912 16777216</span><br><span class="line"></span><br><span class="line"># Tells the system whether it should start at the default window size only for new TCP connections or also for existing TCP connections that have been idle for too long. Default: 1</span><br><span class="line">net.ipv4.tcp_slow_start_after_idle = 0</span><br><span class="line"># Allow reuse of sockets in TIME_WAIT state for new connections only when it is safe from the network stack’s perspective. Default: 0</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line"># Do not last the complete time_wait cycle. Default: 0</span><br><span class="line"># only works from Linux 2.4 to 4.11</span><br><span class="line">net.ipv4.tcp_tw_recycle = 1</span><br><span class="line"># Minimum time a socket will stay in TIME_WAIT state (unusable after being used once). Default: 60</span><br><span class="line">net.ipv4.tcp_fin_timeout = 30</span><br></pre></td></tr></table></figure>
+
+<h2 id="我的配置"><a href="#我的配置" class="headerlink" title="我的配置"></a>我的配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line">#############################################################################</span><br><span class="line"># A minimal rTorrent configuration that provides the basic features</span><br><span class="line">#############################################################################</span><br><span class="line"></span><br><span class="line"># Some default configs are commented out by #, you can override them to fit your needs</span><br><span class="line"># Lines commented out by ## are merely examples (NOT default)</span><br><span class="line"></span><br><span class="line"># It is recommended to extend upon this default config file. For example:</span><br><span class="line"># override only some configs via command line: -o network.port_range.set=6881-6881</span><br><span class="line"># or, on top of custom config: import = /etc/rtorrent/rtorrent.rc</span><br><span class="line"></span><br><span class="line"># Some additional values and commands</span><br><span class="line">method.insert = system.startup_time, value|const, (system.time)</span><br><span class="line"></span><br><span class="line"># rTorrent runtime directory (cfg.basedir) [default: &quot;$HOME/.local/share/rtorrent&quot;]</span><br><span class="line">method.insert = cfg.basedir,  private|const|string, (cat,(fs.homedir),&quot;/rtorrent/&quot;)</span><br><span class="line"></span><br><span class="line"># Default download directory (cfg.download) [default: &quot;$(cfg.basedir)/download&quot;]</span><br><span class="line">#method.insert = cfg.download, private|const|string, (cat,(cfg.basedir),&quot;download/&quot;)</span><br><span class="line">method.insert = cfg.download, private|const|string, (cat,&quot;/home/data/下载/&quot;)</span><br><span class="line"></span><br><span class="line"># Log directory (cfg.logs) [default: &quot;$(cfg.basedir)/log&quot;]</span><br><span class="line">method.insert = cfg.logs,     private|const|string, (cat,(cfg.basedir),&quot;log/&quot;)</span><br><span class="line">method.insert = cfg.logfile,  private|const|string, (cat,(cfg.logs),&quot;rtorrent-&quot;,(system.time),&quot;.log&quot;)</span><br><span class="line"></span><br><span class="line"># Torrent session directory (cfg.session) [default: &quot;$(cfg.basedir)/.session&quot;]</span><br><span class="line">method.insert = cfg.session,  private|const|string, (cat,(cfg.basedir),&quot;.session/&quot;)</span><br><span class="line"></span><br><span class="line"># Watch (drop to add) directories (cfg.watch) [default: &quot;$(cfg.basedir)/watch&quot;]</span><br><span class="line">method.insert = cfg.watch,    private|const|string, (cat,(cfg.basedir),&quot;watch/&quot;)</span><br><span class="line"></span><br><span class="line"># Create directories</span><br><span class="line">fs.mkdir.recursive = (cat,(cfg.basedir))</span><br><span class="line"></span><br><span class="line">fs.mkdir = (cat,(cfg.download))</span><br><span class="line">fs.mkdir = (cat,(cfg.logs))</span><br><span class="line">fs.mkdir = (cat,(cfg.session))</span><br><span class="line"></span><br><span class="line">fs.mkdir = (cat,(cfg.watch))</span><br><span class="line">fs.mkdir = (cat,(cfg.watch),&quot;/load&quot;)</span><br><span class="line">fs.mkdir = (cat,(cfg.watch),&quot;/start&quot;)</span><br><span class="line"></span><br><span class="line"># Drop to &quot;$(cfg.watch)/load&quot; to add torrent</span><br><span class="line">schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), &quot;load/*.torrent&quot;)))</span><br><span class="line"></span><br><span class="line"># Drop to &quot;$(cfg.watch)/start&quot; to add torrent and start downloading</span><br><span class="line">schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), &quot;start/*.torrent&quot;)))</span><br><span class="line"></span><br><span class="line"># Listening port for incoming peer traffic</span><br><span class="line">network.port_range.set = 51418-51418</span><br><span class="line">network.port_random.set = no</span><br><span class="line"></span><br><span class="line"># Distributed Hash Table and Peer EXchange</span><br><span class="line"># Enable tracker-less torrents but vulnerable to passive sniffing</span><br><span class="line"># DHT and PEX are always disabled for private torrents</span><br><span class="line">#dht.mode.set = auto</span><br><span class="line">#dht.port.set = 51418</span><br><span class="line">#protocol.pex.set = yes</span><br><span class="line">dht.mode.set = disable</span><br><span class="line">protocol.pex.set = no</span><br><span class="line"></span><br><span class="line"># DHT nodes for bootstrapping</span><br><span class="line">dht.add_bootstrap = dht.transmissionbt.com:6881</span><br><span class="line">dht.add_bootstrap = dht.libtorrent.org:25401</span><br><span class="line"></span><br><span class="line"># UDP tracker support</span><br><span class="line">#trackers.use_udp.set = yes</span><br><span class="line">trackers.use_udp.set = no</span><br><span class="line"></span><br><span class="line"># Peer settings</span><br><span class="line">throttle.max_downloads.set = 100</span><br><span class="line">throttle.max_uploads.set = 100</span><br><span class="line">throttle.max_downloads.global.set = 300</span><br><span class="line">throttle.max_uploads.global.set = 300</span><br><span class="line">throttle.min_peers.normal.set = 100</span><br><span class="line">throttle.max_peers.normal.set = 200</span><br><span class="line">throttle.min_peers.seed.set = 100</span><br><span class="line">throttle.max_peers.seed.set = 0</span><br><span class="line">trackers.numwant.set = 100</span><br><span class="line"></span><br><span class="line">#protocol.encryption.set = allow_incoming,try_outgoing,enable_retry</span><br><span class="line"></span><br><span class="line"># Limits for file handle resources, this is optimized for</span><br><span class="line"># an `ulimit` of 1024 (a common default). You MUST leave</span><br><span class="line"># a ceiling of handles reserved for rTorrent&#x27;s internal needs!</span><br><span class="line">network.max_open_files.set = 10240</span><br><span class="line">network.max_open_sockets.set = 500</span><br><span class="line"></span><br><span class="line"># Send and receive buffer size for socket. Disabled by default (`0`), this means the default is used by OS </span><br><span class="line">#  (you have to modify the system wide settings!) (`send_buffer_size`, `receive_buffer_size`)</span><br><span class="line"># Increasing buffer sizes may help reduce disk seeking, connection polling as more data is buffered each time</span><br><span class="line">#  the socket is written to. It will result higher memory usage (not visible in rtorrent process!).</span><br><span class="line">network.receive_buffer.size.set =  4M</span><br><span class="line">network.send_buffer.size.set    = 12M</span><br><span class="line"></span><br><span class="line"># Memory resource usage (increase if you have a large number of items loaded,</span><br><span class="line"># and/or the available resources to spend)</span><br><span class="line">pieces.memory.max.set = 1800M</span><br><span class="line">#network.xmlrpc.size_limit.set = 16M</span><br><span class="line"></span><br><span class="line"># Preallocate disk space for contents of a torrent</span><br><span class="line">#</span><br><span class="line"># Useful for reducing fragmentation, improving the performance</span><br><span class="line"># and I/O patterns of future read operations. However, with this</span><br><span class="line"># enabled, preallocated files will occupy the full size even if</span><br><span class="line"># they are not completed.</span><br><span class="line">#</span><br><span class="line"># If you choose to allocate space for the whole torrent at once,</span><br><span class="line"># rTorrent will create all files and allocate the space when the</span><br><span class="line"># torrent is started. rTorrent will NOT delete the file and free</span><br><span class="line"># the allocated space, if you later mark a file as DO NOT DOWNLOAD.</span><br><span class="line">#</span><br><span class="line">#   0 = disabled</span><br><span class="line">#   1 = enabled, allocate when a file is opened for write</span><br><span class="line">#   2 = enabled, allocate the space for the whole torrent at once</span><br><span class="line">system.file.allocate.set = 2</span><br><span class="line"></span><br><span class="line"># Basic operational settings</span><br><span class="line">session.path.set = (cat, (cfg.session))</span><br><span class="line">directory.default.set = (cat, (cfg.download))</span><br><span class="line">log.execute = (cat, (cfg.logs), &quot;execute.log&quot;)</span><br><span class="line">##log.xmlrpc = (cat, (cfg.logs), &quot;xmlrpc.log&quot;)</span><br><span class="line"></span><br><span class="line"># Other operational settings</span><br><span class="line">encoding.add = utf8</span><br><span class="line">system.umask.set = 0027</span><br><span class="line">system.cwd.set = (directory.default)</span><br><span class="line">#schedule2 = low_diskspace, 5, 60, ((close_low_diskspace, 500M))</span><br><span class="line">#pieces.hash.on_completion.set = no</span><br><span class="line">pieces.hash.on_completion.set = no</span><br><span class="line">##view.sort_current = seeding, greater=d.ratio=</span><br><span class="line">##keys.layout.set = qwerty</span><br><span class="line"></span><br><span class="line"># HTTP and SSL</span><br><span class="line">network.http.max_open.set = 50</span><br><span class="line">network.http.dns_cache_timeout.set = 25</span><br><span class="line"></span><br><span class="line"># Path to the CA bundle. By default, rTorrent tries to detect from:</span><br><span class="line">#   $RTORRENT_CA_BUNDLE (highest priority)</span><br><span class="line">#   $CURL_CA_BUNDLE</span><br><span class="line">#   $SSL_CERT_FILE</span><br><span class="line">#   /etc/ssl/certs/ca-certificates.crt</span><br><span class="line">#   /etc/pki/tls/certs/ca-bundle.crt</span><br><span class="line">#   /usr/share/ssl/certs/ca-bundle.crt</span><br><span class="line">#   /usr/local/share/certs/ca-root-nss.crt</span><br><span class="line">#   /etc/ssl/cert.pem (lowest priority)</span><br><span class="line">##network.http.cacert.set = /etc/ssl/certs/ca-certificates.crt</span><br><span class="line"></span><br><span class="line"># Path to the certificate directory to verify the peer. The certificates</span><br><span class="line"># must be in PEM format, and the directory must have been processed using</span><br><span class="line"># the c_rehash utility supplied with openssl.</span><br><span class="line">#</span><br><span class="line"># For advanced users only, generally you should use network.http.cacert.set</span><br><span class="line"># to specify path to the bundle of certificates.</span><br><span class="line">##network.http.capath.set = &quot;/etc/ssl/certs&quot;</span><br><span class="line"></span><br><span class="line">#network.http.ssl_verify_peer.set = 1</span><br><span class="line">#network.http.ssl_verify_host.set = 1</span><br><span class="line"></span><br><span class="line"># Run the rTorrent process as a daemon in the background</span><br><span class="line">#system.daemon.set = false</span><br><span class="line"></span><br><span class="line"># XML-RPC interface</span><br><span class="line">network.scgi.open_local = (cat,(cfg.basedir),rtorrent.sock)</span><br><span class="line"></span><br><span class="line"># Logging:</span><br><span class="line">#   Levels = critical error warn notice info debug</span><br><span class="line">#   Groups = connection_* dht_* peer_* rpc_* storage_* thread_* tracker_* torrent_*</span><br><span class="line">print = (cat, &quot;Logging to &quot;, (cfg.logfile))</span><br><span class="line">log.open_file = &quot;log&quot;, (cfg.logfile)</span><br><span class="line">log.add_output = &quot;info&quot;, &quot;log&quot;</span><br><span class="line">##log.add_output = &quot;tracker_debug&quot;, &quot;log&quot;</span><br><span class="line"></span><br><span class="line">### END of rtorrent.rc ###</span><br></pre></td></tr></table></figure>
+
+<h1 id="批量迁移种子文件"><a href="#批量迁移种子文件" class="headerlink" title="批量迁移种子文件"></a>批量迁移种子文件</h1><h2 id="rtorrent-fast-resume-pl"><a href="#rtorrent-fast-resume-pl" class="headerlink" title="rtorrent_fast_resume.pl"></a>rtorrent_fast_resume.pl</h2><p><strong>rtorrent_fast_resume.pl</strong> 是一个<strong>Perl</strong>脚本，可以将快速恢复数据添加到种子文件，从而跳过<strong>rTorrent</strong>必须对所有文件进行哈希检查。</p>
+<h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rtorrent_fast_resume.pl [文件所在目录] [种子路径.torrent] [生成种子路径.torrent]</span><br></pre></td></tr></table></figure>
+<h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 安装Bencode_XS</span><br><span class="line">wget http://search.cpan.org/CPAN/authors/id/I/IW/IWADE/Convert-Bencode_XS-0.06.tar.gz</span><br><span class="line">wget https://rt.cpan.org/Ticket/Attachment/1433449/761974/patch-t_001_tests_t</span><br><span class="line">tar zxf Convert-Bencode_XS-0.06.tar.gz</span><br><span class="line">cd Convert-Bencode_XS-0.06</span><br><span class="line">patch -uNp0 -i ../patch-t_001_tests_t</span><br><span class="line">perl Makefile.PL</span><br><span class="line">make</span><br><span class="line">make test</span><br><span class="line">sudo make install</span><br><span class="line">## The patch-t_001_tests_t patch itself:</span><br><span class="line">--- t/001_tests.t.orig&lt;&gt;Sat Nov 15 14:41:13 2014</span><br><span class="line">+++ t/001_tests.t&lt;-----&gt;Sat Nov 15 14:41:27 2014</span><br><span class="line">@@ -109,6 +109,7 @@ SKIP: &#123;</span><br><span class="line">     #we use Storable so we do not rely on bencode</span><br><span class="line">     eval q&#123;use Storable qw(freeze)&#125;;.</span><br><span class="line">     skip &quot;Storable not available&quot;, 12 if $@;</span><br><span class="line">+    local $Storable::canonical = 1;</span><br><span class="line">     local $Convert::Bencode_XS::COERCE = 0;</span><br><span class="line">     is( freeze(bdecode(&#x27;le&#x27;)), freeze([]) );</span><br><span class="line">     is( freeze(bdecode(&#x27;l0:0:0:e&#x27;)), freeze([&#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;]) );</span><br><span class="line"># 安装rtorrent_fast_resume.pl脚本</span><br><span class="line">sudo wget https://github.com/jesec/rtorrent/raw/master/doc/rtorrent_fast_resume.pl -O /usr/local/bin/rtorrent_fast_resume.pl</span><br></pre></td></tr></table></figure>
+<h2 id="迁移脚本"><a href="#迁移脚本" class="headerlink" title="迁移脚本"></a>迁移脚本</h2><p><code>move_torrent.sh </code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for i in `cat $1`; do</span><br><span class="line">	echo $&#123;i&#125;</span><br><span class="line">	rtorrent_fast_resume.pl $3 &quot;$&#123;2&#125;/$&#123;i&#125;.torrent&quot; &quot;$&#123;4&#125;/$&#123;i&#125;.torrent&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash move_torrent.sh [需要迁移种子列表] [需要迁移种子所在目录] [文件所在目录] [生成种子目录]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要迁移种子列表：不含后缀名</li>
+<li>需要迁移种子所在目录：略</li>
+<li>文件所在目录：略</li>
+<li>生成种子目录：略</li>
+</ul>
+<h1 id="BUG与处理方式"><a href="#BUG与处理方式" class="headerlink" title="BUG与处理方式"></a>BUG与处理方式</h1><h2 id="random-device"><a href="#random-device" class="headerlink" title="random_device"></a>random_device</h2><p><strong>rTorrent</strong> 无法启动&#x2F;循环启动。</p>
+<h3 id="systemd日志"><a href="#systemd日志" class="headerlink" title="systemd日志"></a>systemd日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl status rtorrent.service</span><br><span class="line">● rtorrent.service - rTorrent service for Docker</span><br><span class="line">     Loaded: loaded (/etc/systemd/system/rtorrent.service; disabled; vendor preset: enabled)</span><br><span class="line">     Active: failed (Result: exit-code) since Wed 2022-05-18 06:17:52 CST; 10s ago</span><br><span class="line">    Process: 140420 ExecStart=/usr/local/bin/rtorrent -o system.daemon.set=true (code=exited, status=255/EXCEPTION)</span><br><span class="line">   Main PID: 140420 (code=exited, status=255/EXCEPTION)</span><br><span class="line">        CPU: 912ms</span><br><span class="line"></span><br><span class="line">May 18 06:17:51 nas systemd[1]: Started rTorrent service for Docker.</span><br><span class="line">May 18 06:17:51 nas rtorrent[140420]: rTorrent: loading 939 entries from session directory</span><br><span class="line">May 18 06:17:52 nas rtorrent[140420]: rTorrent: started, 939 torrents loaded</span><br><span class="line">May 18 06:17:52 nas rtorrent[140420]: rtorrent: random_device::random_device(const std::string&amp;): device not available</span><br><span class="line">May 18 06:17:52 nas systemd[1]: rtorrent.service: Main process exited, code=exited, status=255/EXCEPTION</span><br><span class="line">May 18 06:17:52 nas systemd[1]: rtorrent.service: Failed with result &#x27;exit-code&#x27;.</span><br></pre></td></tr></table></figure>
+<h3 id="处理方式一"><a href="#处理方式一" class="headerlink" title="处理方式一"></a>处理方式一</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">screen -S rt</span><br><span class="line">export XDG_CONFIG_HOME=/usr/local/etc</span><br><span class="line">/usr/local/bin/rtorrent -o system.daemon.set=true</span><br></pre></td></tr></table></figure>
+<h3 id="处理方式二"><a href="#处理方式二" class="headerlink" title="处理方式二"></a>处理方式二</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line"># 增加一行</span><br><span class="line">*/5 * * * * /usr/bin/bash -c &quot;export XDG_CONFIG_HOME=/usr/local/etc &amp;&amp; test `pidof rtorrent` || /usr/local/bin/rtorrent -o system.daemon.set=true &amp;&quot;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/rtorrent/" rel="tag"># rtorrent</a>
+              <a href="/tags/nas/" rel="tag"># nas</a>
+              <a href="/tags/pt/" rel="tag"># pt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/30/ZFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%BE%88%E9%80%82%E5%90%88%E6%8C%82PT/" rel="prev" title="ZFS文件系统很适合挂PT">
+                  <i class="fa fa-chevron-left"></i> ZFS文件系统很适合挂PT
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Auska</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
